@@ -84,20 +84,24 @@
 						<button type="submit">Lookup Order</button>
 					</form>
 				</div>
-
-				<!-- Check if variable holding order is not empty 
-					 Make sure to replace null with your variable!
-				-->
+				
+				<!-- 
+				  -- TO-DO: Check if variable holding order is not empty. Make sure to replace null with your variable!
+				  -->
+				
 				<?php if (!empty(null)): ?>
 					<div class="order-details">
 
+						<!-- 
+				  		  -- TO DO: Fill in the rest of the cards for ALL remaining toys from the db
+  						  -->
 						<h1>Order Details</h1>
 						<p><strong>Name: </strong> <?= '' ?></p>
-				        <p><strong>Username: </strong> <?= '' ?></p>
-				        <p><strong>Order Number: </strong> <?= '' ?></p>
-				        <p><strong>Quantity: </strong> <?= '' ?></p>
-				        <p><strong>Date Ordered: </strong> <?= '' ?></p>
-				        <p><strong>Delivery Date: </strong> <?= '' ?></p>
+				        	<p><strong>Username: </strong> <?= '' ?></p>
+				        	<p><strong>Order Number: </strong> <?= '' ?></p>
+				        	<p><strong>Quantity: </strong> <?= '' ?></p>
+				        	<p><strong>Date Ordered: </strong> <?= '' ?></p>
+				        	<p><strong>Delivery Date: </strong> <?= '' ?></p>
 				      
 					</div>
 				<?php endif; ?>
