@@ -93,7 +93,7 @@
 					<div class="order-details">
 
 						<!-- 
-				  		  -- TO DO: Fill in the rest of the cards for ALL remaining toys from the db
+				  		  -- TO DO: Fill in ALL the placeholders for this order from the db
   						  -->
 						<h1>Order Details</h1>
 						<p><strong>Name: </strong> <?= '' ?></p>
