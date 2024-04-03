@@ -9,7 +9,7 @@
 
 
 	/*
-	 * TO-DO: Define a function that retrieves ALL toy and manufacturer info from the database 		   based on the toynum parameter from the URL query string.
+	 * TO-DO: Define a function that retrieves ALL toy and manufacturer info from the database based on the toynum parameter from the URL query string.
 	 		  - Write SQL query to retrieve ALL toy and manufacturer info based on toynum
 	 		  - Execute the SQL query using the pdo function and fetch the result
 	 		  - Return the toy info
