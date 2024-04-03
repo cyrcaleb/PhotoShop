@@ -5,7 +5,7 @@
 
 
 	/*
-	 * TO-DO: Define a function that retrives ALL customer and order info from the database 		   based on values entered into form.
+	 * TO-DO: Define a function that retrives ALL customer and order info from the database based on values entered into form.
 	 		  - Write SQL query to retrieve ALL customer and order info based on form values
 	 		  - Execute the SQL query using the pdo function and fetch the result
 	 		  - Return the order info
