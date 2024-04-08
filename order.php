@@ -10,6 +10,15 @@
 	 		  - Execute the SQL query using the pdo function and fetch the result
 	 		  - Return the order info
 	 */
+	function retrieveOrderInfo($email, $orderNum, $pdo) {
+		$sql = "SELECT c.cname, c.username, o.ordernum, o.quantity, o.date_ordered, o.date_deliv
+				FROM orders o
+				INNER JOIN customer c ON o.custnum = c.custnum
+				WHERE c.email = :email AND o.ordernum = :orderNum";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute(['email' => $email, 'orderNum' => $orderNum]);
+		return $stmt->fetch();
+	}
 
 	
 	// Check if the request method is POST (i.e, form submitted)
@@ -25,6 +34,7 @@
 		/*
 		 * TO-DO: Retrieve info about order from the db using provided PDO connection
 		 */
+		$orderInfo = retrieveOrderInfo($email, $orderNum, $pdo);
 		
 	}
 // Closing PHP tag  ?> 
@@ -89,21 +99,20 @@
 				  -- TO-DO: Check if variable holding order is not empty. Make sure to replace null with your variable!
 				  -->
 				
-				<?php if (!empty(null)): ?>
+				<?php if (!empty($orderInfo)): ?>
 					<div class="order-details">
 
 						<!-- 
 				  		  -- TO DO: Fill in ALL the placeholders for this order from the db
   						  -->
 						<h1>Order Details</h1>
-						<p><strong>Name: </strong> <?= '' ?></p>
-				        	<p><strong>Username: </strong> <?= '' ?></p>
-				        	<p><strong>Order Number: </strong> <?= '' ?></p>
-				        	<p><strong>Quantity: </strong> <?= '' ?></p>
-				        	<p><strong>Date Ordered: </strong> <?= '' ?></p>
-				        	<p><strong>Delivery Date: </strong> <?= '' ?></p>
-				      
-					</div>
+						<p><strong>Name: </strong><?= $orderInfo['cname'] ?></p>
+							<p><strong>Username: </strong><?= $orderInfo['username'] ?></p>
+							<p><strong>Order Number: </strong><?= $orderInfo['ordernum'] ?></p>
+							<p><strong>Quantity: </strong><?= $orderInfo['quantity'] ?></p>
+							<p><strong>Date Ordered: </strong><?= $orderInfo['date_ordered'] ?></p>
+							<p><strong>Delivery Date: </strong><?= $orderInfo['date_deliv'] ?></p>
+				</div>
 				<?php endif; ?>
 
 			</div>

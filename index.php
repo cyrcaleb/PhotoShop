@@ -34,10 +34,19 @@
 	 * TO-DO: Retrieve info for ALL remaining toys from the db
 	 */
 
+	// Retrieve info for ALL remaining toys from the db
+	$remaining_toys = []; // Initialize an array to store info for all remaining toys
 
-// Closing PHP tag  ?> 
+	// Fetch data for each remaining toy using a loop
+	for ($i = 2; $i < 11; $i++) {
+	    // Assuming toy IDs start from '0002' and increment by 1 up to '0011'
+	    $toy_id = sprintf('%04d', $i); // Format the toy ID with leading zeros
+	    $remaining_toys[] = get_toy($pdo, $toy_id); // Fetch toy info and add to the array
+	}
 
-<!DOCTYPE>
+?>
+
+<!DOCTYPE html>
 <html>
 
 	<head>
@@ -95,84 +104,23 @@
   				<!-- 
 				  -- TO DO: Fill in the rest of the cards for ALL remaining toys from the db
   				  -->
-
-  				<div class="toy-card">
-  					<a href="toy.php?toynum=<?= '' ?>">
-  						<img src="<?= '' ?>" alt="<?= '' ?>">
-  					</a>
-  					<h2><?= '' ?></h2>
-  					<p>$<?= '' ?></p>
-  				</div>
-
-  				<div class="toy-card">
-  					<a href="toy.php?toynum=<?= '' ?>">
-  						<img src="<?= '' ?>" alt="<?= '' ?>">
-  					</a>
-  					<h2><?= '' ?></h2>
-  					<p>$<?= '' ?></p>
-  				</div>
-
-  				<div class="toy-card">
-  					<a href="toy.php?toynum=<?= '' ?>">
-  						<img src="<?= '' ?>" alt="<?= '' ?>">
-  					</a>
-  					<h2><?= '' ?></h2>
-  					<p>$<?= '' ?></p>
-  				</div>
-
-  				<div class="toy-card">
-  					<a href="toy.php?toynum=<?= '' ?>">
-  						<img src="<?= '' ?>" alt="<?= '' ?>">
-  					</a>
-  					<h2><?= '' ?></h2>
-  					<p>$<?= '' ?></p>
-  				</div>
-  				
-  				<div class="toy-card">
-  					<a href="toy.php?toynum=<?= '' ?>">
-  						<img src="<?= '' ?>" alt="<?= '' ?>">
-  					</a>
-  					<h2><?= '' ?></h2>
-  					<p>$<?= '' ?></p>
-  				</div>
-
-  				<div class="toy-card">
-  					<a href="toy.php?toynum=<?= '' ?>">
-  						<img src="<?= '' ?>" alt="<?= '' ?>">
-  					</a>
-  					<h2><?= '' ?></h2>
-  					<p>$<?= '' ?></p>
-  				</div>
-
-  				<div class="toy-card">
-  					<a href="toy.php?toynum=<?= '' ?>">
-  						<img src="<?= '' ?>" alt="<?= '' ?>">
-  					</a>
-  					<h2><?= '' ?></h2>
-  					<p>$<?= '' ?></p>
-  				</div>
-
-  				<div class="toy-card">
-  					<a href="toy.php?toynum=<?= '' ?>">
-  						<img src="<?= '' ?>" alt="<?= '' ?>">
-  					</a>
-  					<h2><?= '' ?></h2>
-  					<p>$<?= '' ?></p>
-  				</div>
-
-  				<div class="toy-card">
-  					<a href="toy.php?toynum=<?= '' ?>">
-  						<img src="<?= '' ?>" alt="<?= '' ?>">
-  					</a>
-  					<h2><?= '' ?></h2>
-  					<p>$<?= '' ?></p>
-  				</div>
+  				<?php
+					// Populate the HTML elements for each remaining toy card dynamically
+					foreach ($remaining_toys as $toy) {
+				?>
+				    <div class="toy-card">
+				        <a href="toy.php?toynum=<?= $toy['toynum'] ?>">
+				            <img src="<?= $toy['imgSrc'] ?>" alt="<?= $toy['name'] ?>">
+				        </a>
+				        <h2><?= $toy['name'] ?></h2>
+				        <p>$<?= $toy['price'] ?></p>
+				    </div>
+				<?php
+					}
+				?>
 
   			</section>
   		</main>
 
 	</body>
 </html>
-
-
-
