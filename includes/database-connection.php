@@ -2,7 +2,7 @@
 
 $type     = 'mysql';                             // Type of database
 $server   = '192.185.2.183';                    // Server the database is on
-$db       = 'calebcyr_toystore';     // Name of the database
+$db       = 'calebcyr_PhotoShop';     // Name of the database
 $port     = '3306';                           // Port is usually 3306 in Hostgator
 $charset  = 'utf8mb4';                       // UTF-8 encoding using 4 bytes of data per char
 
