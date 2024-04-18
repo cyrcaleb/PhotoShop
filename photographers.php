@@ -78,7 +78,9 @@
 						<img src="<?= $photographer['pfpSrc'] ?>" alt="<?= $photographer['fname'] ?> <?= $photographer['lname']?>">
 					</a>
 					<h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
-					<p> Contact: <?= $photographer['phoneNum'] ?></p>
+					<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>"> 
+						<p> See more </p>
+					</a> 
 				</div>
 				<?php
 					}
