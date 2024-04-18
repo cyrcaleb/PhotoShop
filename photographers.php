@@ -67,37 +67,18 @@
 		</header>
 
   		<main>
-  			<section class="toy-catalog">
+  			<section class="photographers">
 
-  				<div class="toy-card">
-  					<!-- Create a hyperlink to toy.php page with toy number as parameter -->
-  					<a href="toy.php?toynum=<?= $toy1['toynum'] ?>">
-
-  						<!-- Display image of toy with its name as alt text -->
-  						<img src="<?= $toy1['imgSrc'] ?>" alt="<?= $toy1['name'] ?>">
-  					</a>
-
-  					<!-- Display name of toy -->
-  					<h2><?= $toy1['name'] ?></h2>
-
-  					<!-- Display price of toy -->
-  					<p>$<?= $toy1['price'] ?></p>
-  				</div>
-
-
-  				<!-- 
-				  -- TO DO: Fill in the rest of the cards for ALL remaining toys from the db
-  				  -->
   				<?php
-					// Populate the HTML elements for each remaining toy card dynamically
-					foreach ($remaining_toys as $toy) {
+					// Loop through the photographers array and display the photographer information
+					foreach ($photographers as $photographer) {
 				?>
-				    <div class="toy-card">
-				        <a href="toy.php?toynum=<?= $toy['toynum'] ?>">
-				            <img src="<?= $toy['imgSrc'] ?>" alt="<?= $toy['name'] ?>">
+				    <div class="photographer-card">
+				        <a href="photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
+				            <img src="<?= $photographer['pfpSrc'] ?>" alt="<?= $photographer['fname'] ?> <?= $photographer['lname']?>">
 				        </a>
-				        <h2><?= $toy['name'] ?></h2>
-				        <p>$<?= $toy['price'] ?></p>
+				        <h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
+				        <p>$<?= $photographer['phoneNum'] ?></p>
 				    </div>
 				<?php
 					}
