@@ -79,7 +79,7 @@
 					</a>
 					<h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
 					<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>"> 
-						<p> See more </p>
+						<p> See Photographer Profile </p>
 					</a> 
 				</div>
 				<?php
