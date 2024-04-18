@@ -30,7 +30,8 @@
 
 ?>
 
-<!DOCTYPE html>
+
+<!DOCTYPE>
 <html>
 
 	<head>
@@ -44,7 +45,6 @@
 	</head>
 
 	<body>
-
 		<header>
 			<div class="header-left">
 				<div class="logo">
@@ -73,17 +73,16 @@
 					// Loop through the photographers array and display the photographer information
 					foreach ($photographers as $photographer) {
 				?>
-				    <div class="photographer-card">
-				        <a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
-				            <img src="<?= $photographer['pfpSrc'] ?>" alt="<?= $photographer['fname'] ?> <?= $photographer['lname']?>">
-				        </a>
-				        <h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
-				        <p> Contact: <?= $photographer['phoneNum'] ?></p>
-				    </div>
+				<div class="photographer-card">
+					<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
+						<img src="<?= $photographer['pfpSrc'] ?>" alt="<?= $photographer['fname'] ?> <?= $photographer['lname']?>">
+					</a>
+					<h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
+					<p> Contact: <?= $photographer['phoneNum'] ?></p>
+				</div>
 				<?php
 					}
 				?>
-
   			</section>
   		</main>
 
