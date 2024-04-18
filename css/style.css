@@ -92,7 +92,7 @@ nav ul li a:hover {
 }
 
 .photographer-card img {
-  max-width: 100%;
+  max-width: 100px;
   border-radius: 5px;
   max-height: 250px;
 }
