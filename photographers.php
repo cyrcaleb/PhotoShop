@@ -24,7 +24,7 @@
 
 	// Fetch data for each remaining photographer using a loop
 	for ($i = 1; $i < 6; $i++) {
-	    $photographer_id = '3' . sprintf('%10d', $i); // Format the photograher ID with leading zeros
+	    $photographer_id = '3' . sprintf('%010d', $i); // Format the photograher ID with leading zeros
 	    $photographers[] = get_photographer($pdo, $photographer_id); // Fetch photographer info and add to the array
 	}
 
