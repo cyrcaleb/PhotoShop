@@ -77,7 +77,7 @@ nav ul li a:hover {
 }
 
 .photographer-card {
-  width: calc(25% - 40px);; 
+  width: calc(25% - 40px);
   margin: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;

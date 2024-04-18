@@ -5,7 +5,7 @@
 
     function get_photographer(PDO $pdo, string $id) {
 
-		// SQL query to retrieve photographer information based on the toy ID
+		// SQL query to retrieve photographer information based on the photographer ID
 		$sql = "SELECT * 
 			FROM Photographer
 			WHERE photographerID = :id;";	// :id is a placeholder for value provided later 
@@ -73,15 +73,15 @@
 					// Loop through the photographers array and display the photographer information
 					foreach ($photographers as $photographer) {
 				?>
-				<div class="photographer-card">
-					<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
-						<img src="<?= $photographer['pfpSrc'] ?>" alt="<?= $photographer['fname'] ?> <?= $photographer['lname']?>">
-					</a>
-					<h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
-					<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>"> 
-						<p> See Photographer Profile </p>
-					</a> 
-				</div>
+					<div class="photographer-card">
+						<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
+							<img src="<?= $photographer['pfpSrc'] ?>" alt="<?= $photographer['fname'] ?> <?= $photographer['lname']?>">
+						</a>
+						<h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
+						<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>"> 
+							<p> See Photographer Profile </p>
+						</a> 
+					</div>
 				<?php
 					}
 				?>
