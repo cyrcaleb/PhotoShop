@@ -68,8 +68,8 @@ nav ul li a:hover {
   margin-top: 20px;
 }
 
-/* Photographer Catalog Styles */
-.photographers {
+/* Toy Catalog Styles */
+.photograher-catalog {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

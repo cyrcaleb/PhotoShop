@@ -67,7 +67,7 @@
 		</header>
 
   		<main>
-  			<section class="photographers">
+  			<section class="photographer-catalog">
 
   				<?php
 					// Loop through the photographers array and display the photographer information
