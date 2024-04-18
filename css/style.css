@@ -76,7 +76,7 @@ nav ul li a:hover {
   padding: 20px;
 }
 
-.toy-card {
+.photographer-card {
   width: calc(25% - 40px);; 
   margin: 20px;
   border: 1px solid #ddd;
@@ -87,17 +87,17 @@ nav ul li a:hover {
   transition: transform 0.3s ease;
 }
 
-.toy-card:hover {
+.photographer-card:hover {
   transform: scale(1.1); 
 }
 
-.toy-card img {
+.photographer-card img {
   max-width: 100%;
   border-radius: 5px;
   max-height: 250px;
 }
 
-.toy-card h2 {
+.photographer-card h2 {
   margin-top: 30px;
   color: #a8ca29;
 }
