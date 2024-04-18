@@ -36,7 +36,7 @@
 	<head>
 		<meta charset="UTF-8">
   		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  		<title>Toys R URI</title>
+  		<title>PhotoShop</title>
   		<link rel="stylesheet" href="css/style.css">
   		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,11 +74,11 @@
 					foreach ($photographers as $photographer) {
 				?>
 				    <div class="photographer-card">
-				        <a href="photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
+				        <a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
 				            <img src="<?= $photographer['pfpSrc'] ?>" alt="<?= $photographer['fname'] ?> <?= $photographer['lname']?>">
 				        </a>
 				        <h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
-				        <p>$<?= $photographer['phoneNum'] ?></p>
+				        <p> Contact: <?= $photographer['phoneNum'] ?></p>
 				    </div>
 				<?php
 					}
