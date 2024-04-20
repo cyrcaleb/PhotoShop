@@ -108,6 +108,29 @@ nav ul li a:hover {
   color: #000000;
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: flex-start; /* Start from the left */
+}
+
+.orderImg-card {
+  flex: 0 0 auto; /* Allow items to grow and shrink as needed */
+  margin-right: 20px; /* Adjust margin between items */
+  margin-bottom: 20px; /* Adjust margin between rows */
+}
+
+.orderImg-card img {
+  max-width: 100%;
+  border-radius: 5px;
+  max-height: 250px;
+}
+
+.orderImg-card p {
+  margin-top: 30px;
+  color: #000000;
+}
+
 .toy-details-container {
   display: flex;
   align-items: flex-start;
@@ -191,7 +214,7 @@ button:hover {
 .order-details p {
   margin-bottom: 5px;
   font-family: "Merriweather", serif;
-  color: darkgrey;
+  color: rgb(0, 0, 0);
 }
 
 .about-container {

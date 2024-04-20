@@ -18,7 +18,6 @@
 				<div class="logo">
 					<img src="imgs/PhotoShopLogo.png" alt="PhotoShop Logo">
       			</div>
-
 	      		<nav>
 	      			<ul>
 	      				<li><a href="index.php">Toy Catalog</a></li>

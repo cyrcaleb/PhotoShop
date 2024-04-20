@@ -82,7 +82,7 @@
 			<div class="order-lookup-container">
 				<form action="order.php" method="POST">
 					<div class="form-group">
-						<label for="orderNum">Order Number:</label>
+						<label for="orderNum">Photoshoot ID Number:</label>
 						<input type="text" id="orderNum" name="orderNum" required>
 					</div>
 					<button type="submit">Lookup Order</button>
@@ -92,10 +92,10 @@
 				<div class="order-details">
 					<h1>Order Details</h1>
 					<p><strong>Photoshoot ID Number: </strong><?= $photos[0]['shootID'] ?></p>
-					<div class="photo-container">
+					<div class="photo-container flex-container">
 						<?php foreach ($photos as $photo): ?>
-							<div class="photo photographer-card">
-								<img src="<?= $photo['imgSrc'] ?>" alt="Photo" style="max-width: 100%; border-radius: 5px; max-height: 250px;">
+							<div class="photo orderImg-card">
+								<img src="<?= $photo['imgSrc'] ?>" alt="Photo">
 								<p><strong>Price: </strong><span class="price"><?= $photo['price'] ?></span></p>
 							</div>
 						<?php endforeach; ?>
