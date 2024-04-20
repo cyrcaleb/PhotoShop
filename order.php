@@ -39,7 +39,7 @@
 	<header>
 		<div class="header-left">
 			<div class="logo">
-				<img src="imgs/lPhotoShopLogo.png" alt="PhotoShop Logo">
+				<img src="imgs/PhotoShopLogo.png" alt="PhotoShop Logo">
 			</div>
 			<nav>
 				<ul>
