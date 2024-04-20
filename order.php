@@ -3,24 +3,29 @@
 	require 'includes/database-connection.php';
 
 	/*
-	 * TO-DO: Define a function that retrieves photos based on shootID
+	 * Define a function that retrieves photos based on shootID and userEmail
 	 */
 	function retrievePhotos($shootID, $pdo) {
-		$sql = "SELECT * FROM photos WHERE shootID = :shootID";
+		$sql = "SELECT * \n"
+			. "FROM contains \n"
+
+			. "JOIN Photo ON contains.photoID = Photo.photoID\n"
+
+			. "WHERE contains.shootID = :shootID;";
 		$stmt = $pdo->prepare($sql);
 		$stmt->execute(['shootID' => $shootID]);
 		return $stmt->fetchAll();
 	}
+	
 
 	// Check if the request method is POST (i.e., form submitted)
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Retrieve the value of the 'shootID' field from the POST data
 		$shootID = $_POST['shootID'];
-
 		/*
-		 * TO-DO: Retrieve photos from the db using provided PDO connection
+		 * Retrieve photos from the database using provided PDO connection
 		 */
-		$photos = retrievePhotos($shootID, $pdo);
+		$photos = retrievePhotos($shootID, $userEmail, $pdo);
 	}
 ?>
 
@@ -69,17 +74,13 @@
 					</div>
 					<button type="submit">Lookup Order</button>
 				</form>
-			<div class="order-lookup-container">
-
+			</div>
 			<?php if (!empty($orderInfo)): ?>
 				<div class="order-details">
 					<h1>Order Details</h1>
-					<p><strong>Name: </strong><?= $orderInfo['cname'] ?></p>
-					<p><strong>Username: </strong><?= $orderInfo['username'] ?></p>
-					<p><strong>Order Number: </strong><?= $orderInfo['ordernum'] ?></p>
-					<p><strong>Quantity: </strong><?= $orderInfo['quantity'] ?></p>
-					<p><strong>Date Ordered: </strong><?= $orderInfo['date_ordered'] ?></p>
-					<p><strong>Delivery Date: </strong><?= $orderInfo['date_deliv'] ?></p>
+					<p><strong>Photoshoot ID Number: </strong><?= $orderInfo['shootID'] ?></p>
+					<p><strong>Image: </strong><?= $orderInfo['imgSrc'] ?></p>
+					<p><strong>Price: </strong><?= $orderInfo['price'] ?></p>
 				</div>
 			<?php endif; ?>
 		</div>
