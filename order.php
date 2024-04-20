@@ -116,7 +116,7 @@
 								<?php if ($photo['print'] == 1): ?>
 									<p style="margin: 5px 0;"><strong>Type: </strong>Print</p>
 								<?php elseif ($photo['canvas'] == 1): ?>
-									<p style="margin: 5px 0;"><strong>Type: </strong>canvas</p>
+									<p style="margin: 5px 0;"><strong>Type: </strong>Canvas</p>
 								<?php else: ?>
 									<p style="margin: 5px 0;">No specific product type specified for this image.</p>
 								<?php endif; ?>
