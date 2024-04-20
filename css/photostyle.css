@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Lilita One", sans-serif;
+  font-family: "Merriweather", serif;
 }
 
 header {
-  background-color: #a8ca29;
+  background-color: #b7b7b7;
   color: #fff;
   padding: 20px;
   display: flex;
@@ -99,7 +99,7 @@ nav ul li a:hover {
 
 .photographer-card h2 {
   margin-top: 30px;
-  color: #a8ca29;
+  color: #b7b7b7;
 }
 
 .toy-details-container {
@@ -152,7 +152,7 @@ input[type="text"] {
 
 button {
   padding: 10px 20px;
-  background-color: #a8ca29;
+  background-color: #b7b7b7;
   color: #fff;
   border: none;
   border-radius: 5px;

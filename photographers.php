@@ -48,7 +48,7 @@
 		<header>
 			<div class="header-left">
 				<div class="logo">
-					<img src="imgs/logo.png" alt="Toy R URI Logo">
+					<img src="imgs/PhotoShopLogo.png" alt="PhotoShop Logo">
       			</div>
 
 	      		<nav>
@@ -68,7 +68,6 @@
 
   		<main>
   			<section class="photographer-catalog">
-
   				<?php
 					// Loop through the photographers array and display the photographer information
 					foreach ($photographers as $photographer) {
