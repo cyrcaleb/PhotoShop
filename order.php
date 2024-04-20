@@ -112,13 +112,13 @@
 						<?php foreach ($photos as $photo): ?>
 							<div class="photo orderImg-card">
 								<img src="<?= $photo['imgSrc'] ?>" alt="Photo">
-								<p><strong>Price: </strong><span class="price"><?= $photo['price'] ?></span></p>
+								<p style="margin: 5px 0;"><strong>Price: </strong><span class="price"><?= $photo['price'] ?></span></p>
 								<?php if ($photo['print'] == 1): ?>
-									<p><strong>Type: Print</strong><span class="price"><?= $photo['price'] ?></span></p>
+									<p style="margin: 5px 0;"><strong>Type: </strong>Print</p>
 								<?php elseif ($photo['canvas'] == 1): ?>
-									<p><strong>Type: canvas</strong><span class="price"><?= $photo['price'] ?></span></p>
+									<p style="margin: 5px 0;"><strong>Type: </strong>canvas</p>
 								<?php else: ?>
-									<p>No specific product type specified for this image.</p>
+									<p style="margin: 5px 0;">No specific product type specified for this image.</p>
 								<?php endif; ?>
 							</div>
 						<?php endforeach; ?>
