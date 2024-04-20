@@ -91,9 +91,9 @@
 			<?php if (!empty($photos)): ?>
 				<div class="order-details">
 					<h1>Order Details</h1>
-					<p><strong>Photoshoot ID Number: </strong><?= $orderInfo['shootID'] ?></p>
-					<p><strong>Image: </strong><?= $orderInfo['imgSrc'] ?></p>
-					<p><strong>Price: </strong><?= $orderInfo['price'] ?></p>
+					<p><strong>Photoshoot ID Number: </strong><?= $photos['shootID'] ?></p>
+					<p><strong>Image: </strong><?= $photos['imgSrc'] ?></p>
+					<p><strong>Price: </strong><?= $photos['price'] ?></p>
 				</div>
 			<?php endif; ?>
 		</div>
