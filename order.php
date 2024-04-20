@@ -39,7 +39,7 @@
 	 */
 	function retrieveLocation($shootID, $pdo) {
 		try {
-			$sql = "SELECT location FROM PhotoShoot WHERE shootID = :shootID";
+			$sql = "SELECT location FROM Photoshoot WHERE shootID = :shootID";
 			$stmt = $pdo->prepare($sql);
 			$stmt->execute(['shootID' => $shootID]);
 			$location = $stmt->fetchColumn();
@@ -114,9 +114,9 @@
 								<img src="<?= $photo['imgSrc'] ?>" alt="Photo">
 								<p><strong>Price: </strong><span class="price"><?= $photo['price'] ?></span></p>
 								<?php if ($photo['print'] == 1): ?>
-									<p>This image will be a print.</p>
+									<p><strong>Type: Print</strong><span class="price"><?= $photo['price'] ?></span></p>
 								<?php elseif ($photo['canvas'] == 1): ?>
-									<p>This image will be a canvas.</p>
+									<p><strong>Type: canvas</strong><span class="price"><?= $photo['price'] ?></span></p>
 								<?php else: ?>
 									<p>No specific product type specified for this image.</p>
 								<?php endif; ?>
