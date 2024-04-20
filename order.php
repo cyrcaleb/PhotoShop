@@ -94,9 +94,9 @@
 					<p><strong>Photoshoot ID Number: </strong><?= $photos[0]['shootID'] ?></p>
 					<div class="photo-container">
 						<?php foreach ($photos as $photo): ?>
-							<div class="photo">
-								<img src="<?= $photo['imgSrc'] ?>" alt="Photo">
-								<p><strong>Price: </strong><?= $photo['price'] ?></p>
+							<div class="photo photographer-card">
+								<img src="<?= $photo['imgSrc'] ?>" alt="Photo" style="max-width: 100%; border-radius: 5px; max-height: 250px;">
+								<p><strong>Price: </strong><span class="price"><?= $photo['price'] ?></span></p>
 							</div>
 						<?php endforeach; ?>
 					</div>
