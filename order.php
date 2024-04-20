@@ -91,9 +91,15 @@
 			<?php if (!empty($photos)): ?>
 				<div class="order-details">
 					<h1>Order Details</h1>
-					<p><strong>Photoshoot ID Number: </strong><?= $photos['shootID'] ?></p>
-					<p><strong>Image: </strong><?= $photos['imgSrc'] ?></p>
-					<p><strong>Price: </strong><?= $photos['price'] ?></p>
+					<p><strong>Photoshoot ID Number: </strong><?= $photos[0]['shootID'] ?></p>
+					<div class="photo-container">
+						<?php foreach ($photos as $photo): ?>
+							<div class="photo">
+								<img src="<?= $photo['imgSrc'] ?>" alt="Photo">
+								<p><strong>Price: </strong><?= $photo['price'] ?></p>
+							</div>
+						<?php endforeach; ?>
+					</div>
 				</div>
 			<?php endif; ?>
 		</div>
