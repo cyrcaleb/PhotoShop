@@ -50,7 +50,7 @@
 	</header>
 	<main>
 		<<div class="order-lookup-container">
-			<h1>Order Lookup</h1>
+			<h1>Upload Photo</h1>
 			<div class="order-lookup-container">
 				<form action="order.php" method="POST">
 					<div class="form-group">
@@ -77,7 +77,7 @@
 						<label for="Image">Image:</label>
 						<input type="text" id="Image" name="Image" required>
 					</div>
-					<button type="submit">Lookup Order</button>
+					<button type="submit">Upload Photo</button>
 				</form>
 			</div>
 		</div>
