@@ -14,6 +14,12 @@ header {
   align-items: center;
 }
 
+header,
+nav ul li a,
+.header-right ul li a {
+  font-size: 25px;
+}
+
 .header-left {
   display: flex;
   align-items: center;
@@ -123,7 +129,7 @@ nav ul li a:hover {
 
 .toy-details p {
   margin-bottom: 10px;
-  font-family: sans-serif;
+  font-family: "Merriweather", serif;
   color: darkgrey;
 }
 
@@ -184,7 +190,7 @@ button:hover {
 
 .order-details p {
   margin-bottom: 5px;
-  font-family: sans-serif;
+  font-family: "Merriweather", serif;
   color: darkgrey;
 }
 
@@ -201,7 +207,7 @@ button:hover {
 .about-container p {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: sans-serif;
+  font-family: "Merriweather", serif;
   color: darkgrey;
   text-align: justify;
 }

@@ -57,17 +57,19 @@
 	<main>
 		<div class="order-lookup-container">
 			<h1>Order Lookup</h1>
-			<form action="order.php" method="POST">
-				<div class="form-group">
-					<label for="email">Email:</label>
-					<input type="email" id="email" name="email" required>
-				</div>
-				<div class="form-group">
-					<label for="orderNum">Order Number:</label>
-					<input type="text" id="orderNum" name="orderNum" required>
-				</div>
-				<button type="submit">Lookup Order</button>
-			</form>
+			<div class="order-lookup-container">
+				<form action="order.php" method="POST">
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email" required>
+					</div>
+					<div class="form-group">
+						<label for="orderNum">Order Number:</label>
+						<input type="text" id="orderNum" name="orderNum" required>
+					</div>
+					<button type="submit">Lookup Order</button>
+				</form>
+			<div class="order-lookup-container">
 
 			<?php if (!empty($orderInfo)): ?>
 				<div class="order-details">
