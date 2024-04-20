@@ -30,7 +30,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Photo Gallery</title>
-	<link rel="stylesheet" href="css/photostyle.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
@@ -65,11 +65,11 @@
 				<button type="submit">View Photos</button>
 			</form>
 			<?php if (!empty($photos)): ?>
-				<div class="photographer-catalog">
+				<div class="photo-gallery">
 					<?php foreach ($photos as $photo): ?>
-						<div class="photographer-card">
+						<div class="photo">
 							<img src="<?= $photo['photo_url'] ?>" alt="<?= $photo['photo_description'] ?>">
-							<h2><?= $photo['photo_description'] ?></h2>
+							<p><?= $photo['photo_description'] ?></p>
 						</div>
 					<?php endforeach; ?>
 				</div>
