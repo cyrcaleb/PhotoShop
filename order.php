@@ -1,80 +1,92 @@
-<?php   										
-	// Include the database connection script
-	require 'includes/database-connection.php';
+<?php
 
-	/*
-	 * TO-DO: Define a function that retrieves photos based on shootID
-	 */
-	function retrievePhotos($shootID, $pdo) {
-		$sql = "SELECT * FROM photos WHERE shootID = :shootID";
-		$stmt = $pdo->prepare($sql);
-		$stmt->execute(['shootID' => $shootID]);
-		return $stmt->fetchAll();
+    // Include the database connection script
+    require 'includes/database-connection.php';
+
+    function get_photographer(PDO $pdo, string $id) {
+
+		// SQL query to retrieve photographer information based on the photographer ID
+		$sql = "SELECT * 
+			FROM Photographer
+			WHERE photographerID = :id;";	// :id is a placeholder for value provided later 
+		                               // It's a parameterized query that helps prevent SQL injection attacks and ensures safer interaction with the database.
+
+
+		// Execute the SQL query using the pdo function and fetch the result
+		$photographer = pdo($pdo, $sql, ['id' => $id])->fetch();		// Associative array where 'id' is the key and $id is the value. Used to bind the value of $id to the placeholder :id in  SQL query.
+
+		// Return the photographer information (associative array)
+		return $photographer;
+	}
+	
+	// Retrieve info for ALL photographers from the db
+	$photographers = []; // Initialize an array to store info for all photographers
+
+	// Fetch data for each remaining photographer using a loop
+	for ($i = 1; $i < 6; $i++) {
+	    $photographer_id = '3' . sprintf('%010d', $i); // Format the photograher ID with leading zeros
+	    $photographers[] = get_photographer($pdo, $photographer_id); // Fetch photographer info and add to the array
 	}
 
-	// Check if the request method is POST (i.e., form submitted)
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		// Retrieve the value of the 'shootID' field from the POST data
-		$shootID = $_POST['shootID'];
-
-		/*
-		 * TO-DO: Retrieve photos from the db using provided PDO connection
-		 */
-		$photos = retrievePhotos($shootID, $pdo);
-	}
 ?>
+
 
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Photo Gallery</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-</head>
-<body>
-	<header>
-		<div class="header-left">
-			<div class="logo">
-				<img src="imgs/logo.png" alt="Toy R URI Logo">
-			</div>
-			<nav>
-				<ul>
-					<li><a href="index.php">Toy Catalog</a></li>
-					<li><a href="about.php">About</a></li>
-				</ul>
-			</nav>
-		</div>
-		<div class="header-right">
-			<ul>
-				<li><a href="order.php">Check Order</a></li>
-			</ul>
-		</div>
-	</header>
-	<main>
-		<div class="photo-gallery-container">
-			<h1>Photo Gallery</h1>
-			<form action="order.php" method="POST">
-				<div class="form-group">
-					<label for="shootID">Shoot ID:</label>
-					<input type="text" id="shootID" name="shootID" required>
-				</div>
-				<button type="submit">View Photos</button>
-			</form>
-			<?php if (!empty($photos)): ?>
-				<div class="photo-gallery">
-					<?php foreach ($photos as $photo): ?>
-						<div class="photo">
-							<img src="<?= $photo['photo_url'] ?>" alt="<?= $photo['photo_description'] ?>">
-							<p><?= $photo['photo_description'] ?></p>
-						</div>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
-		</div>
-	</main>
-</body>
+
+	<head>
+		<meta charset="UTF-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  		<title>PhotoShop</title>
+  		<link rel="stylesheet" href="css/style.css"> <!-- Updated CSS file -->
+  		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+		<header>
+			<div class="header-left">
+				<div class="logo">
+					<img src="imgs/logo.png" alt="Toy R URI Logo">
+      			</div>
+
+	      		<nav>
+	      			<ul>
+	      				<li><a href="index.php">Toy Catalog</a></li>
+	      				<li><a href="about.php">About</a></li>
+			        </ul>
+			    </nav>
+		   	</div>
+
+		    <div class="header-right">
+		    	<ul>
+		    		<li><a href="order.php">Check Order</a></li>
+		    	</ul>
+		    </div>
+		</header>
+
+  		<main>
+  			<section class="photographer-catalog">
+
+  				<?php
+					// Loop through the photographers array and display the photographer information
+					foreach ($photographers as $photographer) {
+				?>
+					<div class="photographer-card">
+						<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
+							<img src="<?= $photographer['pfpSrc'] ?>" alt="<?= $photographer['fname'] ?> <?= $photographer['lname']?>">
+						</a>
+						<h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
+						<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>"> 
+							<p> See Photographer Profile </p>
+						</a> 
+					</div>
+				<?php
+					}
+				?>
+  			</section>
+  		</main>
+
+	</body>
 </html>
