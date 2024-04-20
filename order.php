@@ -6,26 +6,43 @@
 	 * Define a function that retrieves photos based on shootID and userEmail
 	 */
 	function retrievePhotos($shootID, $pdo) {
-		$sql = "SELECT * \n"
-			. "FROM contains \n"
-
-			. "JOIN Photo ON contains.photoID = Photo.photoID\n"
-
-			. "WHERE contains.shootID = :shootID;";
-		$stmt = $pdo->prepare($sql);
-		$stmt->execute(['shootID' => $shootID]);
-		return $stmt->fetchAll();
+		try {
+			// Validate shootID to ensure it only contains digits
+			if (!ctype_digit($shootID)) {
+				throw new Exception("Invalid shootID");
+			}
+			
+			$sql = "SELECT * \n"
+				. "FROM contains \n"
+				. "JOIN Photo ON contains.photoID = Photo.photoID\n"
+				. "WHERE contains.shootID = :shootID;";
+			$stmt = $pdo->prepare($sql);
+			$stmt->execute(['shootID' => $shootID]);
+			return $stmt->fetchAll();
+		} catch (PDOException $e) {
+			// Print error message
+			echo "Error retrieving photos: " . $e->getMessage();
+			// You can handle the error further, like logging it or redirecting the user
+			// For simplicity, just printing the error here
+			return false;
+		} catch (Exception $e) {
+			// Print error message for invalid shootID
+			echo "Invalid input: " . $e->getMessage();
+			// You can handle the error further, like displaying a user-friendly message
+			// For simplicity, just printing the error here
+			return false;
+		}
 	}
 	
 
 	// Check if the request method is POST (i.e., form submitted)
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Retrieve the value of the 'shootID' field from the POST data
-		$shootID = $_POST['shootID'];
+		$shootID = $_POST['orderNum']; // corrected input name
 		/*
 		 * Retrieve photos from the database using provided PDO connection
 		 */
-		$photos = retrievePhotos($shootID, $userEmail, $pdo);
+		$photos = retrievePhotos($shootID, $pdo);
 	}
 ?>
 
@@ -65,22 +82,16 @@
 			<div class="order-lookup-container">
 				<form action="order.php" method="POST">
 					<div class="form-group">
-						<label for="email">Email:</label>
-						<input type="email" id="email" name="email" required>
-					</div>
-					<div class="form-group">
 						<label for="orderNum">Order Number:</label>
 						<input type="text" id="orderNum" name="orderNum" required>
 					</div>
 					<button type="submit">Lookup Order</button>
 				</form>
 			</div>
-			<?php if (!empty($orderInfo)): ?>
+			<?php if (!empty($photos)): ?>
 				<div class="order-details">
 					<h1>Order Details</h1>
-					<p><strong>Photoshoot ID Number: </strong><?= $orderInfo['shootID'] ?></p>
-					<p><strong>Image: </strong><?= $orderInfo['imgSrc'] ?></p>
-					<p><strong>Price: </strong><?= $orderInfo['price'] ?></p>
+					<!-- Display retrieved photos here -->
 				</div>
 			<?php endif; ?>
 		</div>
