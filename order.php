@@ -34,15 +34,30 @@
 		}
 	}
 	
+	/*
+	 * Define a function to retrieve location based on shootID
+	 */
+	function retrieveLocation($shootID, $pdo) {
+		try {
+			$sql = "SELECT location FROM PhotoShoot WHERE shootID = :shootID";
+			$stmt = $pdo->prepare($sql);
+			$stmt->execute(['shootID' => $shootID]);
+			$location = $stmt->fetchColumn();
+			return $location;
+		} catch (PDOException $e) {
+			// Print error message
+			echo "Error retrieving location: " . $e->getMessage();
+			// You can handle the error further, like logging it or redirecting the user
+			// For simplicity, just printing the error here
+			return false;
+		}
+	}
 
 	// Check if the request method is POST (i.e., form submitted)
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		// Retrieve the value of the 'shootID' field from the POST data
-		$shootID = $_POST['orderNum']; // corrected input name
-		/*
-		 * Retrieve photos from the database using provided PDO connection
-		 */
+		$shootID = $_POST['orderNum'];
 		$photos = retrievePhotos($shootID, $pdo);
+		$location = retrieveLocation($shootID, $pdo); // Retrieve location
 	}
 ?>
 
@@ -92,11 +107,19 @@
 				<div class="order-details">
 					<h1>Order Details</h1>
 					<p><strong>Photoshoot ID Number: </strong><?= $photos[0]['shootID'] ?></p>
+					<p><strong>Location: </strong><?= $location ?></p>
 					<div class="photo-container flex-container">
 						<?php foreach ($photos as $photo): ?>
 							<div class="photo orderImg-card">
 								<img src="<?= $photo['imgSrc'] ?>" alt="Photo">
 								<p><strong>Price: </strong><span class="price"><?= $photo['price'] ?></span></p>
+								<?php if ($photo['print'] == 1): ?>
+									<p>This image will be a print.</p>
+								<?php elseif ($photo['canvas'] == 1): ?>
+									<p>This image will be a canvas.</p>
+								<?php else: ?>
+									<p>No specific product type specified for this image.</p>
+								<?php endif; ?>
 							</div>
 						<?php endforeach; ?>
 					</div>

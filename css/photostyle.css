@@ -110,13 +110,12 @@ nav ul li a:hover {
 
 .flex-container {
   display: flex;
-  flex-wrap: wrap; 
-  justify-content: center; 
+  flex-direction: column; 
+  align-items: center;
 }
 
 .orderImg-card {
-  flex: 0 0 auto;
-  margin: 0 10px 20px 10px;
+  margin-bottom: 20px;
 }
 
 .orderImg-card img {
@@ -127,9 +126,9 @@ nav ul li a:hover {
 
 .orderImg-card p {
   margin-top: 30px;
+  margin-bottom: 10px; 
   color: #000000;
 }
-
 
 .toy-details-container {
   display: flex;
