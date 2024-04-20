@@ -39,7 +39,7 @@
 	<header>
 		<div class="header-left">
 			<div class="logo">
-				<img src="imgs/logo.png" alt="Toy R URI Logo">
+				<img src="imgs/logo.png" alt="PhotoShop Logo">
 			</div>
 			<nav>
 				<ul>
@@ -55,23 +55,29 @@
 		</div>
 	</header>
 	<main>
-		<div class="photo-gallery-container">
-			<h1>Photo Gallery</h1>
+		<div class="order-lookup-container">
+			<h1>Order Lookup</h1>
 			<form action="order.php" method="POST">
 				<div class="form-group">
-					<label for="shootID">Shoot ID:</label>
-					<input type="text" id="shootID" name="shootID" required>
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" required>
 				</div>
-				<button type="submit">View Photos</button>
+				<div class="form-group">
+					<label for="orderNum">Order Number:</label>
+					<input type="text" id="orderNum" name="orderNum" required>
+				</div>
+				<button type="submit">Lookup Order</button>
 			</form>
-			<?php if (!empty($photos)): ?>
-				<div class="photographer-catalog">
-					<?php foreach ($photos as $photo): ?>
-						<div class="photographer-card">
-							<img src="<?= $photo['photo_url'] ?>" alt="<?= $photo['photo_description'] ?>">
-							<h2><?= $photo['photo_description'] ?></h2>
-						</div>
-					<?php endforeach; ?>
+
+			<?php if (!empty($orderInfo)): ?>
+				<div class="order-details">
+					<h1>Order Details</h1>
+					<p><strong>Name: </strong><?= $orderInfo['cname'] ?></p>
+					<p><strong>Username: </strong><?= $orderInfo['username'] ?></p>
+					<p><strong>Order Number: </strong><?= $orderInfo['ordernum'] ?></p>
+					<p><strong>Quantity: </strong><?= $orderInfo['quantity'] ?></p>
+					<p><strong>Date Ordered: </strong><?= $orderInfo['date_ordered'] ?></p>
+					<p><strong>Delivery Date: </strong><?= $orderInfo['date_deliv'] ?></p>
 				</div>
 			<?php endif; ?>
 		</div>
