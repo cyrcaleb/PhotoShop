@@ -3,21 +3,30 @@
     // Include the database connection script
     require 'includes/database-connection.php';
 
-    function get_photographer(PDO $pdo) {
+    function get_photographer(PDO $pdo, string $id) {
 
-		// SQL query to retrieve every photographer in the database
+		// SQL query to retrieve photographer information based on the photographer ID
 		$sql = "SELECT * 
-			FROM Photographer;";
+			FROM Photographer
+			WHERE photographerID = :id;";	// :id is a placeholder for value provided later 
+		                               // It's a parameterized query that helps prevent SQL injection attacks and ensures safer interaction with the database.
+
 
 		// Execute the SQL query using the pdo function and fetch the result
-		$photographers = pdo($pdo, $sql)->fetchAll();
-		
-		// Return the photographer information (associative array)
-		return $photographers;
-	}
+		$photographer = pdo($pdo, $sql, ['id' => $id])->fetch();		// Associative array where 'id' is the key and $id is the value. Used to bind the value of $id to the placeholder :id in  SQL query.
 
+		// Return the photographer information (associative array)
+		return $photographer;
+	}
+	
 	// Retrieve info for ALL photographers from the db
-	$photographers = get_photographer($pdo);
+	$photographers = []; // Initialize an array to store info for all photographers
+
+	// Fetch data for each remaining photographer using a loop
+	for ($i = 1; $i < 6; $i++) {
+	    $photographer_id = '3' . sprintf('%010d', $i); // Format the photograher ID with leading zeros
+	    $photographers[] = get_photographer($pdo, $photographer_id); // Fetch photographer info and add to the array
+	}
 
 ?>
 
