@@ -8,10 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Query the database to check if the username and password match
+    // Hash the password using SHA-256
+    $hashedPassword = hash('sha256', $password);
+
+    // Query the database to check if the username and hashed password match
     $query = "SELECT * FROM Account WHERE username = ? AND password = ?";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$username, $password]);
+    $stmt->execute([$username, $hashedPassword]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
