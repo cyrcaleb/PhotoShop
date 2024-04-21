@@ -1,9 +1,4 @@
 <?php
-// Enable error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Include the database connection script
 require 'includes/database-connection.php';
 
 function createNewShoot($email, $account, $location, $date, $pdo)
@@ -95,10 +90,8 @@ function createNewShoot($email, $account, $location, $date, $pdo)
         // Return the new shootID
         return $new_shootID;
     } catch (PDOException $e) {
-        // Print the error message
         return "Error: " . $e->getMessage();
     } catch (Exception $e) {
-        // Print the error message
         return "Error: " . $e->getMessage();
     }
 }
@@ -174,7 +167,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="submit">Create</button>
                 </form>
             </div>
-            <?php if (isset($success) && !is_string($success)): ?>
+            <?php if (is_string($success)): ?>
+            <div class="error-message">
+                <p><?= $success ?></p>
+            </div>
+            <?php endif; ?>
+            <?php if (is_int($success)): ?>
             <div class="order-details">
                 <h1>New Photoshoot Details</h1>
                 <p><strong>Photoshoot ID Number: </strong><?= $success ?></p>
