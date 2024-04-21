@@ -105,7 +105,6 @@ function createNewShoot($email, $account, $location, $date, $pdo)
     }
 }
 
-
 // Check if the request method is POST (i.e., form submitted)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve user input (make sure to trim and sanitize the input if necessary)

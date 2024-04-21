@@ -52,8 +52,10 @@
 			$stmt_contains->execute();
 		} catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
+			return false;
 		} catch (Exception $e) {
 			echo "Error: " . $e->getMessage();
+			return false;
 		}
 	}
 	
@@ -73,10 +75,8 @@
 			$stmt->execute(['shootID' => $shootID]);
 			return $stmt->fetchAll();
 		} catch (PDOException $e) {
-			echo "Error retrieving photos: " . $e->getMessage();
 			return false;
 		} catch (Exception $e) {
-			echo "Invalid input: " . $e->getMessage();
 			return false;
 		}
 	}
@@ -89,7 +89,6 @@
 			$location = $stmt->fetchColumn();
 			return $location;
 		} catch (PDOException $e) {
-			echo "Error retrieving location: " . $e->getMessage();
 			return false;
 		}
 	}
