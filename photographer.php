@@ -104,6 +104,7 @@
   			  -->
 			<?php $photographer = get_photographer($pdo, $photographer_id); ?>
             <?php $shoot_count = count_shoots($pdo, $photographer_id); ?>
+            <?php $photos = get_photos($pdo, $photographer_id); ?>
 
 			<div class="photographer-details-container">
 				<div class="photographer-image">
