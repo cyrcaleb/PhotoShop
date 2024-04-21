@@ -82,7 +82,6 @@
 		<div class="header-right">
 			<ul>
 				<li><a href="order.php">Check Order</a></li>
-				<li><a href="upload.php">Upload Photos</a></li>
 			</ul>
 		</div>
 	</header>
