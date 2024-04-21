@@ -80,6 +80,8 @@ nav ul li a:hover {
   flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
+  margin: 0 auto;
+  width: 80%; 
 }
 
 .photographer-card {
