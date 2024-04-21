@@ -67,7 +67,7 @@
 		</header>
 
   		<main>
-  			<div class="photographer-catalog">
+  			<section class="photographer-catalog">
   				<?php
 					// Loop through the photographers array and display the photographer information
 					foreach ($photographers as $photographer) {
@@ -84,7 +84,7 @@
 				<?php
 					}
 				?>
-  			</div>
+  			</section>
   		</main>
 
 	</body>
