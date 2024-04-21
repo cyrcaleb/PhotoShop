@@ -60,7 +60,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Photo Gallery</title>
+	<title>Check Order</title>
 	<link rel="stylesheet" href="css/photostyle.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,7 +91,7 @@
 		<div class="order-lookup-container">
 			<h1>Order Lookup</h1>
 			<div class="order-lookup-container">
-				<form action="order.php" method="POST">
+				<form action="p_order.php" method="POST">
 					<div class="form-group">
 						<label for="orderNum">Photoshoot ID Number:</label>
 						<input type="text" id="orderNum" name="orderNum" required>
