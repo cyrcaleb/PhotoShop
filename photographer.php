@@ -41,6 +41,16 @@
 
     }
 
+    // Get the photos shot by specific photographer
+    function get_photos(PDO $pdo, string $id) {
+
+        // SQL query to retrieve photos shot by a specific photographer
+        $sql = "SELECT * 
+                FROM Photo
+                WHERE photographerID = :id;";
+
+    }
+
 // Closing PHP tag  ?> 
 
 <!DOCTYPE>
@@ -73,7 +83,7 @@
 
 		    <div class="header-right">
 		    	<ul>
-		    		<li><a href="c_order.php">Check Order</a></li>
+		    		<li><a href="p_order.php">Check Order</a></li>
 		    	</ul>
 		    </div>
 		</header>
