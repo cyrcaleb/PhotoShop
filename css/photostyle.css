@@ -2,16 +2,22 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Lilita One", sans-serif;
+  font-family: "Merriweather", serif;
 }
 
 header {
-  background-color: #a8ca29;
+  background-color: #b7b7b7;
   color: #fff;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+header,
+nav ul li a,
+.header-right ul li a {
+  font-size: 25px;
 }
 
 .header-left {
@@ -68,16 +74,18 @@ nav ul li a:hover {
   margin-top: 20px;
 }
 
-/* Toy Catalog Styles */
-.toy-catalog {
+/* Photographer Catalog Styles */
+.photographer-catalog {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
+  margin: 0 auto;
+  width: 80%; 
 }
 
-.toy-card {
-  width: calc(25% - 40px);; 
+.photographer-card {
+  width: calc(25% - 40px);
   margin: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -87,43 +95,65 @@ nav ul li a:hover {
   transition: transform 0.3s ease;
 }
 
-.toy-card:hover {
+.photographer-card:hover {
   transform: scale(1.1); 
 }
 
-.toy-card img {
+.photographer-card img {
   max-width: 100%;
   border-radius: 5px;
   max-height: 250px;
 }
 
-.toy-card h2 {
+.photographer-card h2 {
   margin-top: 30px;
-  color: #a8ca29;
+  color: #000000;
 }
 
-.toy-details-container {
+.flex-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+}
+
+.orderImg-card {
+  margin-bottom: 20px;
+}
+
+.orderImg-card img {
+  max-width: 100%;
+  border-radius: 5px;
+  max-height: 250px;
+}
+
+.orderImg-card p {
+  margin-top: 30px;
+  margin-bottom: 10px; 
+  color: #000000;
+}
+
+.photographer-details-container {
   display: flex;
   align-items: flex-start;
 }
 
-.toy-image {
+.photographer-image {
   flex: 1;
 }
 
-.toy-image img {
+.photographer-image img {
   max-width: 100%;
   height: auto;
 }
 
-.toy-details {
+.photographer-details {
   flex: 2;
   padding-left: 20px;
 }
 
-.toy-details p {
+.photographer-details p {
   margin-bottom: 10px;
-  font-family: sans-serif;
+  font-family: "Merriweather", serif;
   color: darkgrey;
 }
 
@@ -152,7 +182,7 @@ input[type="text"] {
 
 button {
   padding: 10px 20px;
-  background-color: #a8ca29;
+  background-color: #b7b7b7;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -184,8 +214,8 @@ button:hover {
 
 .order-details p {
   margin-bottom: 5px;
-  font-family: sans-serif;
-  color: darkgrey;
+  font-family: "Merriweather", serif;
+  color: rgb(0, 0, 0);
 }
 
 .about-container {
@@ -201,7 +231,7 @@ button:hover {
 .about-container p {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: sans-serif;
+  font-family: "Merriweather", serif;
   color: darkgrey;
   text-align: justify;
 }

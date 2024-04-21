@@ -64,9 +64,8 @@
 		<header>
 			<div class="header-left">
 				<div class="logo">
-					<img src="imgs/logo.png" alt="Toy R URI Logo">
+				<img src="imgs/PhotoShopLogo.png" alt="PhotoShop Logo">
       			</div>
-
 	      		<nav>
 	      			<ul>
 	      				<li><a href="index.php">Toy Catalog</a></li>
