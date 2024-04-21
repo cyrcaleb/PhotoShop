@@ -113,9 +113,9 @@
     </div>
     <div class="header-right">
         <ul>
-            <li><a href="order.php">Check Order</a></li>
-            <li><a href="upload.php">Upload Photos</a></li>
-            <li><a href="newShoot.php">New Photoshoot</a></li>
+            <li><a href="PhotographerView/order.php">Check Order</a></li>
+            <li><a href="PhotographerView/upload.php">Upload Photos</a></li>
+            <li><a href="PhotographerView/newShoot.php">New Photoshoot</a></li>
         </ul>
     </div>
 </header>
