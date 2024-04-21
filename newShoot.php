@@ -137,7 +137,7 @@
                     <input type="text" id="location" name="location" required>
                 </div>
                 <div class="form-group">
-                    <label for="date">Date:</label>
+                    <label for="date">Date (Year-Month-Day | Example: 2000-01-01):</label>
                     <input type="text" id="date" name="date" required>
                 </div>
                 <button type="submit">Create</button>
@@ -148,7 +148,7 @@
                 <h1>New Photoshoot Details</h1>
                 <p><strong>Photoshoot ID Number: </strong><?= $success ?></p>
                 <p><strong>Location: </strong><?= $location ?></p>
-                <p><strong>Date (Year-Month-Day | Example: 2000-01-01): </strong><?= $date ?></p>
+                <p><strong>Date: </strong><?= $date ?></p>
                 <p>Email chain between you and the customer has been established and customer has been given the photoshoot ID number for tracking.</p>
             </div>
         <?php endif; ?>
