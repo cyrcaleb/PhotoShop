@@ -130,7 +130,7 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="index.php">Toy Catalog</a></li>
+					<li><a href="photographers_catalog.php">Photographers</a></li>
 					<li><a href="about.php">About</a></li>
 				</ul>
 			</nav>

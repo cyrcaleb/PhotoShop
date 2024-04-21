@@ -1,4 +1,8 @@
 <?php
+    // Enable error reporting
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
     // Include the database connection script
     require 'includes/database-connection.php';
 
@@ -67,13 +71,19 @@
     // Check if the request method is POST (i.e., form submitted)
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve user input
-        $email = $_POST['email'];
-        $account = $_POST['account'];
-        $location = $_POST['location'];
-        $date = $_POST['date'];
+        $email = $_POST['email'] ?? '';
+        $account = $_POST['account'] ?? '';
+        $location = $_POST['location'] ?? '';
+        $date = $_POST['date'] ?? '';
         
+        // Check if all fields are filled
+        if (empty($email) || empty($account) || empty($location) || empty($date)) {
+            echo "Please fill in all fields.";
+            exit;
+        }
+
         // Call the createNewShoot function
-        $success = createNewShoot($email, $account, $location, $date);
+        $success = createNewShoot($email, $account, $location, $date, $pdo);
     }
 ?>
 
@@ -96,7 +106,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.php">Toy Catalog</a></li>
+                <li><a href="photographers_catalog.php">Photographers</a></li>
                 <li><a href="about.php">About</a></li>
             </ul>
         </nav>
