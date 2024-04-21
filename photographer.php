@@ -49,10 +49,10 @@
         // Use those shoots to find all the photos within
         // Get and return the image sources of those photos
         $sql = "SELECT Photo.imgSrc
-        FROM Photo
-        JOIN contains ON Photo.photoID = contains.photoID
-        JOIN customer_shoot ON contains.shootID = customer_shoot.shootID
-        WHERE customer_shoot.photographerID = :id;";
+                FROM Photo
+                JOIN contains ON Photo.photoID = contains.photoID
+                JOIN customer_shoot ON contains.shootID = customer_shoot.shootID
+                WHERE customer_shoot.photographerID = :id;";
 
         // Execute the SQL query using the pdo function and fetch the result
         $photos = pdo($pdo, $sql, ['id' => $id])->fetchAll();
@@ -112,27 +112,30 @@
 				</div>
 
 				<div class="photographer-details">
-
 					<!-- Display name of photographer -->
 			        <h1><?= $photographer['fname'] ?> <?=$photographer['lname']?></h1>
-
 			        <hr />
-
 			        <h3>Photographer Details</h3>
-
 			        <!-- Number of photoshoots -->
 			        <p><strong>Total photoshoots:</strong> <?= $shoot_count['numshoots'] ?></p>
-
 			        <!-- Yearly salary -->
 			        <p><strong>Salary:</strong> $<?= $photographer['salary'] ?></p>
-
 			        <!-- Contact email -->
 			        <p><strong>Email:</strong> <?= $photographer['email'] ?></p>
-
 			        <!-- Contact phone number -->
 			        <p><strong>Phone number:</strong> <?= $photographer['phoneNum'] ?></p>
-
 			    </div>
+
+                <div class="order-details">
+					<h2><?= $photographer['fname'] ?> <?=$photographer['lname'] ?>'s photos</h2>
+					<div class="photo-container flex-container">
+						<?php foreach ($photos as $photo): ?>
+							<div class="photo orderImg-card">
+								<img src="<?= $photo['imgSrc'] ?>" alt="Photo">
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
 			</div>
 		</main>
 
