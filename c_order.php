@@ -89,7 +89,7 @@
 		<div class="order-lookup-container">
 			<h1>Order Lookup</h1>
 			<div class="order-lookup-container">
-				<form action="order.php" method="POST">
+				<form action="c_order.php" method="POST">
 					<div class="form-group">
 						<label for="orderNum">Photoshoot ID Number:</label>
 						<input type="text" id="orderNum" name="orderNum" required>
