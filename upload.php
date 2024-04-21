@@ -97,7 +97,6 @@
 	// Check if the request method is POST (i.e., form submitted)
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$shootID = $_POST['orderNum'];
-		$account = $_POST['account'];
 		$printCanvas = $_POST['printCanvas'];
 		$size = $_POST['size'];
 		$price = $_POST['price'];
@@ -151,10 +150,6 @@
 					<div class="form-group">
 						<label for="orderNum">Photoshoot ID Number:</label>
 						<input type="text" id="orderNum" name="orderNum" required>
-					</div>
-					<div class="form-group">
-						<label for="account">Customer Account:</label>
-						<input type="text" id="account" name="account" required>
 					</div>
                     <div class="form-group">
 						<label for="printCanvas">Print or Canvas:</label>
