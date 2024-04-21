@@ -51,11 +51,9 @@
 			$stmt_contains->bindParam(':photoID', $new_photoID, PDO::PARAM_INT);
 			$stmt_contains->execute();
 		} catch (PDOException $e) {
-			echo "Error: " . $e->getMessage();
-			return false;
+			return "Error: " . $e->getMessage();
 		} catch (Exception $e) {
-			echo "Error: " . $e->getMessage();
-			return false;
+			return "Error: " . $e->getMessage();
 		}
 	}
 	
@@ -102,7 +100,7 @@
 		$imgSrc = $_POST['Image'];
 
 		// Call the function to add the photo
-		addPhotos($shootID, $printCanvas, $size, $price, $imgSrc, $pdo);
+		$is_string_success = addPhotos($shootID, $printCanvas, $size, $price, $imgSrc, $pdo);
 
 		$shootID = $_POST['orderNum'];
 		$photos = retrievePhotos($shootID, $pdo);
@@ -170,7 +168,7 @@
 					<button type="submit">Upload Photo</button>
 				</form>
 			</div>
-			<?php if (!empty($photos)): ?>
+			<?php if (!is_string($is_string_success) && !empty($photos)): ?>
 				<div class="order-details">
 					<h1>Order Details</h1>
 					<p><strong>Photoshoot ID Number: </strong><?= $photos[0]['shootID'] ?></p>

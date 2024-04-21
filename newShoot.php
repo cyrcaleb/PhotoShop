@@ -96,12 +96,10 @@ function createNewShoot($email, $account, $location, $date, $pdo)
         return $new_shootID;
     } catch (PDOException $e) {
         // Print the error message
-        echo "Error: " . $e->getMessage();
-        return false;
+        return "Error: " . $e->getMessage();
     } catch (Exception $e) {
         // Print the error message
-        echo "Error: " . $e->getMessage();
-        return false;
+        return "Error: " . $e->getMessage();
     }
 }
 
@@ -176,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="submit">Create</button>
                 </form>
             </div>
-            <?php if (isset($success)): ?>
+            <?php if (isset($success) && !is_string($success)): ?>
             <div class="order-details">
                 <h1>New Photoshoot Details</h1>
                 <p><strong>Photoshoot ID Number: </strong><?= $success ?></p>
