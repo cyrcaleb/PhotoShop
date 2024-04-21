@@ -3,47 +3,21 @@
     // Include the database connection script
     require 'includes/database-connection.php';
 
-    function get_photographer(PDO $pdo, string $id) {
+    function get_photographer(PDO $pdo) {
 
-		// SQL query to retrieve photographer information based on the photographer ID
+		// SQL query to retrieve every photographer in the database
 		$sql = "SELECT * 
-			FROM Photographer
-			WHERE photographerID = :id;";	// :id is a placeholder for value provided later 
-		                               // It's a parameterized query that helps prevent SQL injection attacks and ensures safer interaction with the database.
-
+			FROM Photographer;";
 
 		// Execute the SQL query using the pdo function and fetch the result
-		$photographer = pdo($pdo, $sql, ['id' => $id])->fetch();		// Associative array where 'id' is the key and $id is the value. Used to bind the value of $id to the placeholder :id in  SQL query.
-
+		$photographers = pdo($pdo, $sql)->fetchAll();
+		
 		// Return the photographer information (associative array)
-		return $photographer;
+		return $photographers;
 	}
 
-	// Get the number of photographers in the database to fetch and display
-	function num_photographers(PDO $pdo) {
-
-		// SQL query to count the number of photographers in the database
-		$sql = "SELECT COUNT(*) AS num_photographers
-				FROM Photographer;";
-
-		// Execute the SQL query using the pdo function and fetch the result
-		$num_photographers = pdo($pdo, $sql)->fetch();
-
-		// Return the number of photographers
-		return $num_photographers;
-
-	}
-	
 	// Retrieve info for ALL photographers from the db
-	$photographers = []; // Initialize an array to store info for all photographers
-	$num_photographers = num_photographers($pdo); // Get the total number of photographers in the database
-
-
-	// Fetch data for each remaining photographer using a loop
-	for ($i = 1; $i <= $num_photographers; $i++) {
-	    $photographer_id = '3' . sprintf('%010d', $i); // Format the photograher ID with leading zeros
-	    $photographers[] = get_photographer($pdo, $photographer_id); // Fetch photographer info and add to the array
-	}
+	$photographers = get_photographer($pdo);
 
 ?>
 
