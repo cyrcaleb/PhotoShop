@@ -137,7 +137,7 @@
                 <div class="photo-container flex-container">
                     <?php foreach ($photos as $photo): ?>
                         <div class="photo orderImg-card">
-                            <img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoID'] ?>">
+                            <img src="<?= $photo['imgSrc'] ?>" alt="Photo Num <?= $photo['photoID'] ?>">
                         </div>
                     <?php endforeach; ?>
                 </div>
