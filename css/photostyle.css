@@ -75,7 +75,7 @@ nav ul li a:hover {
 }
 
 /* Photographer Catalog Styles */
-.photograher-catalog {
+.photographer-catalog {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

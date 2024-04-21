@@ -119,7 +119,7 @@
                     <input type="text" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="account">Customer Account:</label>
+                    <label for="account">Customer Account Username:</label>
                     <input type="text" id="account" name="account" required>
                 </div>
                 <div class="form-group">
