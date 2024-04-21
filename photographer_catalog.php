@@ -73,11 +73,11 @@
 					foreach ($photographers as $photographer) {
 				?>
 					<div class="photographer-card">
-						<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
+						<a href="photographer.php?photographerID=<?= $photographer['photographerID'] ?>">
 							<img src="<?= $photographer['pfpSrc'] ?>" alt="<?= $photographer['fname'] ?> <?= $photographer['lname']?>">
 						</a>
 						<h2><?= $photographer['fname'] ?> <?= $photographer['lname']?></h2>
-						<a href="Photographer.php?photographerID=<?= $photographer['photographerID'] ?>"> 
+						<a href="photographer.php?photographerID=<?= $photographer['photographerID'] ?>"> 
 							<p> See Photographer Profile </p>
 						</a> 
 					</div>
