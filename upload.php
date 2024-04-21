@@ -2,7 +2,7 @@
 	// Include the database connection script
 	require 'includes/database-connection.php';
 
-	function addPhotos($account, $printCanvas, $size, $price, $imgSrc, $pdo) {
+	function addPhotos($shootID, $printCanvas, $size, $price, $imgSrc, $pdo) {
 		try {
 			// Convert "print" or "canvas" to corresponding integer values
 			$printCanvas = strtolower($printCanvas);
@@ -18,12 +18,12 @@
 			$new_photoID = $last_id + 1;
 	
 			// Prepare the SQL query to insert the new photo
-			$sql = "INSERT INTO `Photo` (`photoID`, `print`, `canvas`, `size`, `price`, `imgSrc`) 
+			$sql_photo = "INSERT INTO `Photo` (`photoID`, `print`, `canvas`, `size`, `price`, `imgSrc`) 
 					VALUES (:photoID, :print, :canvas, :size, :price, :imgSrc)";
 			
-			// Prepare and execute the statement
-			$stmt = $pdo->prepare($sql);
-			$stmt->execute([
+			// Prepare and execute the statement for inserting photo
+			$stmt_photo = $pdo->prepare($sql_photo);
+			$stmt_photo->execute([
 				':photoID' => $new_photoID,
 				':print' => $print,
 				':canvas' => $canvas,
@@ -31,11 +31,23 @@
 				':price' => $price,
 				':imgSrc' => $imgSrc
 			]);
+	
+			// Prepare the SQL query to insert into contains table
+			$sql_contains = "INSERT INTO `contains` (`shootID`, `photoID`) 
+					VALUES (:shootID, :photoID)";
+			
+			// Prepare and execute the statement for inserting into contains
+			$stmt_contains = $pdo->prepare($sql_contains);
+			$stmt_contains->execute([
+				':shootID' => $shootID,
+				':photoID' => $new_photoID
+			]);
 		} catch (PDOException $e) {
 			// Print the error message
 			echo "Error: " . $e->getMessage();
 		}
 	}
+
 
 	function retrievePhotos($shootID, $pdo) {
 		try {
@@ -84,6 +96,7 @@
 	
 	// Check if the request method is POST (i.e., form submitted)
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$shootID = $_POST['orderNum'];
 		$account = $_POST['account'];
 		$printCanvas = $_POST['printCanvas'];
 		$size = $_POST['size'];
@@ -91,7 +104,7 @@
 		$imgSrc = $_POST['Image'];
 
 		// Call the function to add the photo
-		addPhotos($account, $printCanvas, $size, $price, $imgSrc, $pdo);
+		addPhotos($shootID, $printCanvas, $size, $price, $imgSrc, $pdo);
 
 		$shootID = $_POST['orderNum'];
 		$photos = retrievePhotos($shootID, $pdo);
