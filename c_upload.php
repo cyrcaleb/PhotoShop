@@ -137,9 +137,9 @@
 		</div>
 		<div class="header-right">
 			<ul>
-				<li><a href="Photographer/order.php">Check Order</a></li>
-				<li><a href="Photographer/upload.php">Upload Photos</a></li>
-				<li><a href="Photographer/newShoot.php">New Photoshoot</a></li>
+				<li><a href="c_order.php">Check Order</a></li>
+				<li><a href="c_upload.php">Upload Photos</a></li>
+				<li><a href="c_newShoot.php">New Photoshoot</a></li>
 			</ul>
 		</div>
 	</header>
