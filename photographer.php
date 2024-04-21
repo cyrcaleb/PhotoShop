@@ -48,7 +48,7 @@
         // Use the photographerID to find their shoots
         // Use those shoots to find all the photos within
         // Get and return the image sources of those photos
-        $sql = "SELECT Photo.imgSrc
+        $sql = "SELECT Photo.imgSrc, Photo.photoID
                 FROM Photo
                 JOIN contains ON Photo.photoID = contains.photoID
                 JOIN customer_shoot ON contains.shootID = customer_shoot.shootID
@@ -126,18 +126,20 @@
 			        <!-- Contact phone number -->
 			        <p><strong>Phone number:</strong> <?= $photographer['phoneNum'] ?></p>
 			    </div>
+            </div>
 
-                <div class="order-details">
-					<h2><?= $photographer['fname'] ?> <?=$photographer['lname'] ?>'s photos</h2>
-					<div class="photo-container flex-container">
-						<?php foreach ($photos as $photo): ?>
-							<div class="photo orderImg-card">
-								<img src="<?= $photo['imgSrc'] ?>" alt="Photo">
-							</div>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			</div>
+            <!-- Display photos taken by the photographer -->
+            <div class="order-details">
+                <h2><?= $photographer['fname'] ?> <?=$photographer['lname'] ?>'s photos</h2>
+                <div class="photo-container flex-container">
+                    <?php foreach ($photos as $photo): ?>
+                        <div class="photo orderImg-card">
+                            <img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoID'] ?>">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+			
 		</main>
 
 	</body>
