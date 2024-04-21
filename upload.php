@@ -1,17 +1,29 @@
 <?php   										
-	// Include the database connection script
 	require 'includes/database-connection.php';
 
 	function addPhotos($shootID, $printCanvas, $size, $price, $imgSrc, $pdo) {
 		try {
+			// Validate input parameters
+			if(empty($shootID) || empty($printCanvas) || empty($size) || empty($price) || empty($imgSrc)) {
+				throw new Exception("One or more required parameters are missing.");
+			}
+			
 			// Convert "print" or "canvas" to corresponding integer values
 			$printCanvas = strtolower($printCanvas);
 			$print = ($printCanvas === "print") ? 1 : 0;
 			$canvas = ($printCanvas === "canvas") ? 1 : 0;
 	
+			// Validate and sanitize size and price inputs
+			$size = filter_var($size, FILTER_VALIDATE_INT);
+			$price = filter_var($price, FILTER_VALIDATE_FLOAT);
+			if($size === false || $price === false) {
+				throw new Exception("Invalid size or price format.");
+			}
+	
 			// Prepare the SQL query to get the last inserted photoID
 			$sql_last_id = "SELECT MAX(photoID) AS last_id FROM Photo";
-			$stmt_last_id = $pdo->query($sql_last_id);
+			$stmt_last_id = $pdo->prepare($sql_last_id);
+			$stmt_last_id->execute();
 			$row = $stmt_last_id->fetch(PDO::FETCH_ASSOC);
 			$last_id = $row['last_id'];
 			// Generate the new photoID
@@ -23,35 +35,32 @@
 			
 			// Prepare and execute the statement for inserting photo
 			$stmt_photo = $pdo->prepare($sql_photo);
-			$stmt_photo->execute([
-				':photoID' => $new_photoID,
-				':print' => $print,
-				':canvas' => $canvas,
-				':size' => $size,
-				':price' => $price,
-				':imgSrc' => $imgSrc
-			]);
+			$stmt_photo->bindParam(':photoID', $new_photoID, PDO::PARAM_INT);
+			$stmt_photo->bindParam(':print', $print, PDO::PARAM_INT);
+			$stmt_photo->bindParam(':canvas', $canvas, PDO::PARAM_INT);
+			$stmt_photo->bindParam(':size', $size, PDO::PARAM_INT);
+			$stmt_photo->bindParam(':price', $price, PDO::PARAM_STR);
+			$stmt_photo->bindParam(':imgSrc', $imgSrc, PDO::PARAM_STR);
+			$stmt_photo->execute();
 	
-			// Prepare the SQL query to insert into contains table
 			$sql_contains = "INSERT INTO `contains` (`shootID`, `photoID`) 
 					VALUES (:shootID, :photoID)";
 			
-			// Prepare and execute the statement for inserting into contains
 			$stmt_contains = $pdo->prepare($sql_contains);
-			$stmt_contains->execute([
-				':shootID' => $shootID,
-				':photoID' => $new_photoID
-			]);
+			$stmt_contains->bindParam(':shootID', $shootID, PDO::PARAM_INT);
+			$stmt_contains->bindParam(':photoID', $new_photoID, PDO::PARAM_INT);
+			$stmt_contains->execute();
 		} catch (PDOException $e) {
-			// Print the error message
+			echo "Error: " . $e->getMessage();
+		} catch (Exception $e) {
 			echo "Error: " . $e->getMessage();
 		}
 	}
+	
 
 
 	function retrievePhotos($shootID, $pdo) {
 		try {
-			// Validate shootID to ensure it only contains digits
 			if (!ctype_digit($shootID)) {
 				throw new Exception("Invalid shootID");
 			}
@@ -64,16 +73,10 @@
 			$stmt->execute(['shootID' => $shootID]);
 			return $stmt->fetchAll();
 		} catch (PDOException $e) {
-			// Print error message
 			echo "Error retrieving photos: " . $e->getMessage();
-			// You can handle the error further, like logging it or redirecting the user
-			// For simplicity, just printing the error here
 			return false;
 		} catch (Exception $e) {
-			// Print error message for invalid shootID
 			echo "Invalid input: " . $e->getMessage();
-			// You can handle the error further, like displaying a user-friendly message
-			// For simplicity, just printing the error here
 			return false;
 		}
 	}
@@ -86,10 +89,7 @@
 			$location = $stmt->fetchColumn();
 			return $location;
 		} catch (PDOException $e) {
-			// Print error message
 			echo "Error retrieving location: " . $e->getMessage();
-			// You can handle the error further, like logging it or redirecting the user
-			// For simplicity, just printing the error here
 			return false;
 		}
 	}
@@ -154,10 +154,10 @@
 					</div>
                     <div class="form-group">
 						<label for="printCanvas">Print or Canvas:</label>
-						<input type="text" id="printCanvas" name="printCanvas" required>
+							<input type="text" id="printCanvas" name="printCanvas" required>
 					</div>
                     <div class="form-group">
-						<label for="size">Size:</label>
+						<label for="size">Size (Inches Diagonally):</label>
 						<input type="text" id="size" name="size" required>
 					</div>
                     <div class="form-group">

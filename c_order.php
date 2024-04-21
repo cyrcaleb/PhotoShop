@@ -1,10 +1,8 @@
 <?php   										
-	// Include the database connection script
 	require 'includes/database-connection.php';
 
 	function retrievePhotos($shootID, $pdo) {
 		try {
-			// Validate shootID to ensure it only contains digits
 			if (!ctype_digit($shootID)) {
 				throw new Exception("Invalid shootID");
 			}
@@ -17,16 +15,10 @@
 			$stmt->execute(['shootID' => $shootID]);
 			return $stmt->fetchAll();
 		} catch (PDOException $e) {
-			// Print error message
 			echo "Error retrieving photos: " . $e->getMessage();
-			// You can handle the error further, like logging it or redirecting the user
-			// For simplicity, just printing the error here
 			return false;
 		} catch (Exception $e) {
-			// Print error message for invalid shootID
 			echo "Invalid input: " . $e->getMessage();
-			// You can handle the error further, like displaying a user-friendly message
-			// For simplicity, just printing the error here
 			return false;
 		}
 	}
@@ -39,15 +31,11 @@
 			$location = $stmt->fetchColumn();
 			return $location;
 		} catch (PDOException $e) {
-			// Print error message
 			echo "Error retrieving location: " . $e->getMessage();
-			// You can handle the error further, like logging it or redirecting the user
-			// For simplicity, just printing the error here
 			return false;
 		}
 	}
 
-	// Check if the request method is POST (i.e., form submitted)
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$shootID = $_POST['orderNum'];
 		$photos = retrievePhotos($shootID, $pdo);
