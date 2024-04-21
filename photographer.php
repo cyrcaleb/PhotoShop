@@ -45,9 +45,17 @@
     function get_photos(PDO $pdo, string $id) {
 
         // SQL query to retrieve photos shot by a specific photographer
-        $sql = "SELECT * 
-                FROM Photo
-                WHERE photographerID = :id;";
+        // Use the photographerID to find their shoots
+        // Use those shoots to find all the photos within
+        // Get and return the image sources of those photos
+        $sql = "SELECT Photo.imgSrc
+        FROM Photo
+        JOIN contains ON Photo.photoID = contains.photoID
+        JOIN customer_shoot ON contains.shootID = customer_shoot.shootID
+        WHERE customer_shoot.photographerID = :id;";
+
+        // Execute the SQL query using the pdo function and fetch the result
+        $photos = pdo($pdo, $sql, ['id' => $id])->fetchAll();
 
     }
 
