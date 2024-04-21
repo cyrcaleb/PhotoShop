@@ -126,19 +126,20 @@
 			        <!-- Contact phone number -->
 			        <p><strong>Phone number:</strong> <?= $photographer['phoneNum'] ?></p>
 			    </div>
+            </div>
 
-                <!-- Display photos taken by the photographer -->
-                <div class="order-details">
-					<h2><?= $photographer['fname'] ?> <?=$photographer['lname'] ?>'s photos</h2>
-					<div class="photo-container flex-container">
-						<?php foreach ($photos as $photo): ?>
-							<div class="photo orderImg-card">
-								<img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoID'] ?>">
-							</div>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			</div>
+            <!-- Display photos taken by the photographer -->
+            <div class="order-details">
+                <h2><?= $photographer['fname'] ?> <?=$photographer['lname'] ?>'s photos</h2>
+                <div class="photo-container flex-container">
+                    <?php foreach ($photos as $photo): ?>
+                        <div class="photo orderImg-card">
+                            <img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoID'] ?>">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+			
 		</main>
 
 	</body>
