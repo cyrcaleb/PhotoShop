@@ -73,7 +73,7 @@
 
 		    <div class="header-right">
 		    	<ul>
-		    		<li><a href="order.php">Check Order</a></li>
+		    		<li><a href="c_order.php">Check Order</a></li>
 		    	</ul>
 		    </div>
 		</header>
