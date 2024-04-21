@@ -57,6 +57,9 @@
         // Execute the SQL query using the pdo function and fetch the result
         $photos = pdo($pdo, $sql, ['id' => $id])->fetchAll();
 
+        // Return the photos shot by the given photographer
+        return $photos;
+
     }
 
 // Closing PHP tag  ?> 
