@@ -132,26 +132,26 @@ nav ul li a:hover {
   color: #000000;
 }
 
-.toy-details-container {
+.photographer-details-container {
   display: flex;
   align-items: flex-start;
 }
 
-.toy-image {
+.photographer-image {
   flex: 1;
 }
 
-.toy-image img {
+.photographer-image img {
   max-width: 100%;
   height: auto;
 }
 
-.toy-details {
+.photographer-details {
   flex: 2;
   padding-left: 20px;
 }
 
-.toy-details p {
+.photographer-details p {
   margin-bottom: 10px;
   font-family: "Merriweather", serif;
   color: darkgrey;
