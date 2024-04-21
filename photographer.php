@@ -102,9 +102,8 @@
 		</header>
 
         <main>
-			<!-- 
-			  -- TO DO: Fill in ALL the placeholders for this toy from the db
-  			  -->
+			
+            <!-- Get the photographer's information and photos -->
 			<?php $photographer = get_photographer($pdo, $photographer_id); ?>
             <?php $shoot_count = count_shoots($pdo, $photographer_id); ?>
             <?php $photos = get_photos($pdo, $photographer_id); ?>
