@@ -2,9 +2,6 @@
 	// Include the database connection script
 	require 'includes/database-connection.php';
 
-	/*
-	 * Define a function that retrieves photos based on shootID and userEmail
-	 */
 	function retrievePhotos($shootID, $pdo) {
 		try {
 			// Validate shootID to ensure it only contains digits
@@ -34,9 +31,6 @@
 		}
 	}
 	
-	/*
-	 * Define a function to retrieve location based on shootID
-	 */
 	function retrieveLocation($shootID, $pdo) {
 		try {
 			$sql = "SELECT location FROM Photoshoot WHERE shootID = :shootID";
@@ -57,7 +51,7 @@
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$shootID = $_POST['orderNum'];
 		$photos = retrievePhotos($shootID, $pdo);
-		$location = retrieveLocation($shootID, $pdo); // Retrieve location
+		$location = retrieveLocation($shootID, $pdo); 
 	}
 ?>
 
