@@ -138,8 +138,6 @@
 		<div class="header-right">
 			<ul>
 				<li><a href="c_order.php">Check Order</a></li>
-				<li><a href="c_upload.php">Upload Photos</a></li>
-				<li><a href="c_newShoot.php">New Photoshoot</a></li>
 			</ul>
 		</div>
 	</header>
