@@ -67,7 +67,7 @@
 		</header>
 
   		<main>
-  			<section class="photographer-catalog">
+  			<section class="order-lookup-container">
   				<?php
 					// Loop through the photographers array and display the photographer information
 					foreach ($photographers as $photographer) {
