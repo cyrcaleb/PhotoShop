@@ -74,7 +74,7 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="photographers_catalog.php">Photographers</a></li>
+					<li><a href="photographer_catalog.php">Photographers</a></li>
 					<li><a href="about.php">About</a></li>
 				</ul>
 			</nav>
