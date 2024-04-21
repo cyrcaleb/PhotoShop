@@ -34,10 +34,10 @@
                 WHERE photographerID = :id;";
 
         // Execute the SQL query using the pdo function and fetch the result
-        $numshoots = pdo($pdo, $sql, ['id' => $id])->fetch();
+        $shoot_count = pdo($pdo, $sql, ['id' => $id])->fetch();
 
         // Return the number of photoshoots for the given photographer
-        return $numshoots['numshoots'];
+        return $shoot_count;
 
     }
 
@@ -83,7 +83,7 @@
 			  -- TO DO: Fill in ALL the placeholders for this toy from the db
   			  -->
 			<?php $photographer = get_photographer($pdo, $photographer_id); ?>
-            <?php $numshoots = count_shoots($pdo, $photographer_id); ?>
+            <?php $shoot_count = count_shoots($pdo, $photographer_id); ?>
 
 			<div class="photographer-details-container">
 				<div class="photographer-image">
@@ -101,7 +101,7 @@
 			        <h3>Photographer Details</h3>
 
 			        <!-- Number of photoshoots -->
-			        <p><strong>Total photoshoots:</strong> <?= $numshoots['numshoots'] ?></p>
+			        <p><strong>Total photoshoots:</strong> <?= $shoot_count['numshoots'] ?></p>
 
 			        <!-- Yearly salary -->
 			        <p><strong>Salary:</strong> $<?= $photographer['salary'] ?></p>
