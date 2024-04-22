@@ -50,9 +50,6 @@
 			$stmt_contains->bindParam(':shootID', $shootID, PDO::PARAM_INT);
 			$stmt_contains->bindParam(':photoID', $new_photoID, PDO::PARAM_INT);
 			$stmt_contains->execute();
-			
-			// Return success message
-			return true;
 		} catch (PDOException $e) {
 			return "Error: " . $e->getMessage();
 		} catch (Exception $e) {
@@ -103,16 +100,11 @@
 		$imgSrc = $_POST['Image'];
 
 		// Call the function to add the photo
-		$result = addPhotos($shootID, $printCanvas, $size, $price, $imgSrc, $pdo);
-		
-		if ($result === true) {
-			// Retrieve photos and location if success
-			$photos = retrievePhotos($shootID, $pdo);
-			$location = retrieveLocation($shootID, $pdo); 
-		} else {
-			// Display error message if an error occurred
-			$error_message = $result;
-		}
+		$is_string_success = addPhotos($shootID, $printCanvas, $size, $price, $imgSrc, $pdo);
+
+		$shootID = $_POST['orderNum'];
+		$photos = retrievePhotos($shootID, $pdo);
+		$location = retrieveLocation($shootID, $pdo); 
 	}
 ?>
 
@@ -176,12 +168,7 @@
 					<button type="submit">Upload Photo</button>
 				</form>
 			</div>
-			<?php if (isset($error_message)): ?>
-				<div class="error-message">
-					<p><?= $error_message ?></p>
-				</div>
-			<?php endif; ?>
-			<?php if (isset($photos)): ?>
+			<?php if (!is_string($is_string_success) && !empty($photos)): ?>
 				<div class="order-details">
 					<h1>Order Details</h1>
 					<p><strong>Photoshoot ID Number: </strong><?= $photos[0]['shootID'] ?></p>
