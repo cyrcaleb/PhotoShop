@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Choose Your User Type</h1>
-    <form action="userChoice.php" method="post">
+    <form action="login.php" method="post">
         <input type="submit" name="user_type" value="Photographer">
         <input type="submit" name="user_type" value="Customer">
     </form>
