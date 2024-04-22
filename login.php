@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Login successful<br>";
 
         // Login successful, redirect the user to the dashboard or some other page
-        header('Location: about.php');
+        header('Location: https://calebcyr.rhody.dev/PhotoShop/about.php');
         exit;
     } else {
         // Debug message
