@@ -15,11 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Hash the password using SHA-256
     $hashedPassword = hash('sha256', $password);
 
-    // Debug messages
-    echo "Username: $username<br>";
-    echo "Password: $password<br>";
-    echo "Hashed Password: $hashedPassword<br>";
-
     // Query the database to check if the username and hashed password match
     $query = "SELECT * FROM Account WHERE username = ? AND password = ?";
     $stmt = $pdo->prepare($query);
