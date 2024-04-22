@@ -18,9 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        // Login successful, redirect the user to the dashboard or some other page
-        header('Location: dashboard.php');
-        exit;
+        //print to console line
+        echo "Login successful";
+        // Login successful, redirect the user to the about page
+        header('Location: about.php');
     } else {
         // Login failed, display an error message
         echo "Invalid username or password";
