@@ -26,8 +26,15 @@
 		<div class="header-right">
 			<ul>
 				<li><a href="p_order.php">Check Order</a></li>
-				<li><a href="upload.php">Upload Photos</a></li>
-				<li><a href="newShoot.php">New Photoshoot</a></li>
+				<?php
+					// Include the PHP script to check if the user is logged in as a photographer
+					require_once 'check_photographer_login.php';
+					// Check if the user is logged in as a photographer
+					if ($isPhotographerLoggedIn) {
+						echo '<li><a href="upload.php">Upload Photos</a></li>';
+						echo '<li><a href="newShoot.php">New Photoshoot</a></li>';
+					}
+				?>
 			</ul>
 		</div>
 	</header>
