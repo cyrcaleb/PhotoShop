@@ -1,4 +1,6 @@
 <?php
+	include 'includes/sessions.php';
+	logout();
     require 'includes/database-connection.php';
 
     /*
