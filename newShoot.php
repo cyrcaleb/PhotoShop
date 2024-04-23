@@ -1,6 +1,6 @@
 <?php
 include 'includes/sessions.php';
-require_login($logged_in);                  // Redirect user if not logged in
+require_login($logged_in); // Redirect user if not logged in
 // Include the database connection script
 require 'includes/database-connection.php';
 
@@ -90,14 +90,14 @@ function createNewShoot($email, $account, $location, $date, $pdo)
         $stmt_customer_shoot->bindParam(':photographerID', $photographerID);
         $stmt_customer_shoot->execute();
 
-        // Return the new shootID
-        return $new_shootID;
+        // Return true to indicate success
+        return true;
     } catch (PDOException $e) {
-        // Print the error message
-        return "Error: " . $e->getMessage();
+        // Return false if there's a PDOException
+        return false;
     } catch (Exception $e) {
-        // Print the error message
-        return "Error: " . $e->getMessage();
+        // Return false if there's any other Exception
+        return false;
     }
 }
 
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $location = $_POST['location'] ?? '';
     $date = $_POST['date'] ?? '';
 
-    // Call the createNewShoot function
+    // Call the createNewShoot function and store the result in $success
     $success = createNewShoot($email, $account, $location, $date, $pdo);
 }
 ?>
@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <nav>
                 <ul>
                     <li><a href="photographer_catalog.php">Photographers</a></li>
-					<li><a href="photos.php">Photos</a></li>
+                    <li><a href="photos.php">Photos</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="userLogout.php">Logout</a></li>
                 </ul>
@@ -174,13 +174,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="submit">Create</button>
                 </form>
             </div>
-           <?php if (isset($success) && $success === true): ?>
+            <?php if (isset($success) && $success): ?>
             <div class="order-details">
                 <h1>New Photoshoot Details</h1>
-                <p><strong>Photoshoot ID Number: </strong><?= $success ?></p>
-                <p><strong>Location: </strong><?= $location ?></p>
-                <p><strong>Date: </strong><?= $date ?></p>
-                <p>Email chain between you and the customer has been established and customer has been given the photoshoot ID number for tracking.</p>
+                <p>New photoshoot created successfully.</p>
+            </div>
+            <?php elseif (isset($success)): ?>
+            <div class="order-details">
+                <h1>Error</h1>
+                <p>Failed to create new photoshoot.</p>
             </div>
             <?php endif; ?>
         </div>
