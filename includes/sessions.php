@@ -6,7 +6,7 @@ function login()                                         // Remember user passed
 {
     session_regenerate_id(true);                         // Update session id
     $_SESSION['logged_in'] = true;                       // Set logged_in key to true
-    $_SESSION['user_type'] = $_POST['user_type'];        // Set user type key to user type
+    $_SESSION['user_type'] = "Photographer";        // Set user type key to user type
 }   
 
 function logout()                                        // Terminate the session
