@@ -3,6 +3,11 @@ include 'includes/c_sessions.php';
 // Include the database connection script
 require 'includes/database-connection.php';
 
+if ($logged_in){
+    header('Location: about.php');
+    exit;
+}
+
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the submitted username and password
@@ -19,8 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        login('Customer');
-        // Login successful, redirect the user to the dashboard or some other page
+        // login('Customer');
         header('Location: about.php');
         exit;
     } else {
