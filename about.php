@@ -1,7 +1,8 @@
 <?php
 include 'includes/sessions.php';
 require_login($logged_in);                  // Redirect user if not logged in
-print_r($_SESSION);
+//print session user_type
+echo "Welcome " . $_SESSION['user_type'] . " ";
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
