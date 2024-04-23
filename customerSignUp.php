@@ -26,16 +26,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Generate the next accountID by incrementing the last one
         $nextAccountID = $lastAccountID + 1;
 
+        //Fetch the last custID from the Customer table
+        $stmt = $pdo->query("SELECT custID FROM Customer ORDER BY custID DESC LIMIT 1");
+        $lastCustID = $stmt->fetchColumn();
+
+        //Generate the next custID by incrementing the last one
+        $custID = $lastCustID + 1;
+
         // Insert data into Customer table
-        $stmt = $pdo->prepare("INSERT INTO Customer (custID, fname, lname, email, phoneNum) VALUES (UUID(), ?, ?, ?, ?)");
-        $stmt->execute([$fname, $lname, $email, $phoneNum]);
+        $stmt = $pdo->prepare("INSERT INTO Customer (custID, fname, lname, email, phoneNum) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$custID, $fname, $lname, $email, $phoneNum]);
 
         // Insert data into Account table with the generated accountID
         $stmt = $pdo->prepare("INSERT INTO Account (accountID, username, password) VALUES (?, ?, ?)");
         $stmt->execute([$nextAccountID, $username, $hashedPassword]);
-
-        // Get the last inserted custID
-        $custID = $pdo->lastInsertId();
 
         // Insert data into owns_a table
         $stmt = $pdo->prepare("INSERT INTO owns_a (custID, accountID) VALUES (?, ?)");
