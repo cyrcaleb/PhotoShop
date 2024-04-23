@@ -5,8 +5,8 @@ $logged_in = $_SESSION['logged_in'] ?? false;            // Is user logged in?
 function login()                                         // Remember user passed login
 {
     session_regenerate_id(true);                         // Update session id
-    $_SESSION['logged_in'] = true;                       // Set logged_in key to true
     $_SESSION['user_type'] = 'Photographer';
+    $_SESSION['logged_in'] = true;                       // Set logged_in key to true
 }   
 
 function logout()                                        // Terminate the session
