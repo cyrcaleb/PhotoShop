@@ -31,7 +31,7 @@
             session_start();
 
             // Check if the user is logged in as a photographer
-            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'photographer') {
+            if ($_SESSION['user_type'] === 'photographer') {
                 echo "<li><a href='upload.php'>Upload Photos</a></li>";
                 echo "<li><a href='newShoot.php'>New Photoshoot</a></li>";
             } else {
