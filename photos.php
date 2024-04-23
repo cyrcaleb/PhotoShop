@@ -61,9 +61,9 @@
 		    </div>
 		</header>
 		
-		<div class="photo-container flex-container">
+		<div class="photo-page-container flex-container">
 			<?php foreach ($photos as $photo): ?>
-				<div class="photo orderImg-card">
+				<div class="photo orderImg-card photo-card">
 					<a href="photographer.php?photographerID=<?= $photo['photographerID'] ?>">
 						<img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoId'] ?>">
 					</a>

@@ -235,3 +235,13 @@ button:hover {
   color: darkgrey;
   text-align: justify;
 }
+
+/* Photos page */
+.photo-page-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.photo-card:hover {
+  transform: scale(1.1); 
+}
