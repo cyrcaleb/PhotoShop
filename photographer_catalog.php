@@ -19,11 +19,25 @@
 		return $photographer;
 	}
 	
+	// Get the number of photographers in the database
+	function count_photographers(PDO $pdo) {
+		// SQL query to count the number of photographers in the database
+		$sql = "SELECT COUNT(*) AS num_photographers
+				FROM Photographer;";
+
+		// Execute the SQL query using the pdo function and fetch the result
+		$photographer_count = pdo($pdo, $sql)->fetch();
+
+		// Return the number of photographers in the database
+		return $photographer_count;
+	}
+
 	// Retrieve info for ALL photographers from the db
 	$photographers = []; // Initialize an array to store info for all photographers
+	$num_photographers = count_photographers($pdo)['num_photographers']; // Get the total number of photographers in the database
 
 	// Fetch data for each remaining photographer using a loop
-	for ($i = 1; $i < 6; $i++) {
+	for ($i = 1; $i <= $num_photographers; $i++) {
 	    $photographer_id = '3' . sprintf('%010d', $i); // Format the photograher ID with leading zeros
 	    $photographers[] = get_photographer($pdo, $photographer_id); // Fetch photographer info and add to the array
 	}

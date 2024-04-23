@@ -1,16 +1,38 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['user_type']) && ($_POST['user_type'] == "Photographer" || $_POST['user_type'] == "Customer")) {
-        $user_type = $_POST['user_type'];
-        if ($user_type == "Photographer") {
-            header("Location: photographer_login.php");
-            exit;
-        } elseif ($user_type == "Customer") {
-            header("Location: customer_login.php");
-            exit;
-        }
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Include the database connection script
+require 'includes/database-connection.php';
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the submitted username and password
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Hash the password using SHA-256
+    $hashedPassword = hash('sha256', $password);
+
+    // Query the database to check if the username and hashed password match
+    $query = "SELECT * FROM Account WHERE username = ? AND password = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$username, $hashedPassword]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        header('Location: https://calebcyr.rhody.dev/PhotoShop/about.php');
+        exit;
     } else {
-        echo "Invalid user type.";
+        // Debug message
+        echo "Login failed<br>";
+
+        // Login failed, display an error message
+        echo "Invalid username or password";
     }
+} else {
+    // Debug message
+    echo "Form not submitted";
 }
 ?>
