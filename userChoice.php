@@ -6,7 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($_POST['user_type'] === 'Customer') {
         header('Location: customerLogin.php');
         exit;
-    } else {
+    } elseif ($_POST['user_type'] === 'Sign Up') {
+        header('Location: customerSignUp.php');
+        exit;
+    }
+    else {
         // Handle invalid user type
         echo "Invalid user type selected";
     }
