@@ -6,7 +6,6 @@ function login()                                         // Remember user passed
 {
     session_regenerate_id(true);                         // Update session id
     $_SESSION['logged_in'] = true;                       // Set logged_in key to true
-    $_SESSION['user_type'] = "Photographer";        // Set user type key to user type
 }   
 
 function logout()                                        // Terminate the session
@@ -25,5 +24,11 @@ function require_login($logged_in)                       // Check if user logged
     if ($logged_in == false) {                           // If not logged in
         header('Location: startScreen.php');                   // Send to login page
         exit;                                            // Stop rest of page running
+    }
+}
+
+function check_user_type(){
+    if(isset($_SESSION['user_type'])){
+        return true;
     }
 }

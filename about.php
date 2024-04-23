@@ -1,3 +1,4 @@
+
 <?php
 include 'includes/sessions.php';
 require_login($logged_in);                  // Redirect user if not logged in
@@ -32,12 +33,12 @@ ini_set('display_errors', 1);
 		<div class="header-right">
 			<ul>
 				<li><a href="p_order.php">Check Order</a></li>
-				<?php
-					if ($_SESSION['user_type'] = "Photographer") {
-						echo '<li><a href="upload.php">Upload Photos</a></li>';
-						echo '<li><a href="newShoot.php">New Photoshoot</a></li>';
+				// Only show if user_type is Photographer
+				<?php 
+					if check_user_type() {
+						echo "<li><a href="upload.php">Upload Photos</a></li>"
 					}
-            	?>
+				?>
 			</ul>
 		</div>
 	</header>
