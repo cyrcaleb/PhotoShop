@@ -1,6 +1,7 @@
 <?php
 include 'includes/sessions.php';
 require_login($logged_in);                  // Redirect user if not logged in
+logout();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
