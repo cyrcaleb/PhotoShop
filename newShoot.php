@@ -1,5 +1,7 @@
 <?php
 include 'includes/sessions.php';
+//print our user_type
+print_r($_SESSION);
 logout();
 // Enable error reporting
 error_reporting(E_ALL);
