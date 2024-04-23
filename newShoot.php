@@ -174,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="submit">Create</button>
                 </form>
             </div>
-            <?php if (isset($success) && !is_string($success)): ?>
+           <?php if (isset($success) && $success === true): ?>
             <div class="order-details">
                 <h1>New Photoshoot Details</h1>
                 <p><strong>Photoshoot ID Number: </strong><?= $success ?></p>
