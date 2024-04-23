@@ -1,4 +1,6 @@
 <?php
+	include 'includes/sessions.php';
+	require_login($logged_in);
     require 'includes/database-connection.php';
 
     /*
@@ -65,7 +67,7 @@
 						<li><a href="newShoot.php">New Photoshoot</a></li>
 					<?php } ?>
 				</ul>
-	</div>
+			</div>
 		</header>
 		
 		<div class="photo-page-container flex-container">
