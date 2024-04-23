@@ -134,12 +134,17 @@
 			</nav>
 		</div>
 		<div class="header-right">
-			<ul>
-				<li><a href="p_order.php">Check Order</a></li>
+		<ul>
+			<li><a href="p_order.php">Check Order</a></li>
+			<!-- only display Upload Photos and New Photoshoot if session user_type is Photographer -->
+			<?php
+			$user_type = $_SESSION['user_type'] ?? ''; // Retrieve user_type from session
+			if ($user_type == "Photographer") { ?>
 				<li><a href="upload.php">Upload Photos</a></li>
 				<li><a href="newShoot.php">New Photoshoot</a></li>
-			</ul>
-		</div>
+			<?php } ?>
+		</ul>
+	</div>
 	</header>
 	<main>
 		<div class="order-lookup-container">
