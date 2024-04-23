@@ -26,8 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Set session variables to indicate user login status and type
         $_SESSION['logged_in'] = true;
         $_SESSION['user_type'] = 'Photographer';
-
-        var_dump($_SESSION);
+        
         // Redirect the user to the dashboard or some other page
         header('Location: about.php');
         exit;
