@@ -68,7 +68,7 @@
 						<img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoId'] ?>">
 					</a>
 					<h2><?= $photo['location'] ?></h2>
-					<h6>Taken by <?= $photo['fname'] ?> <?= $photo['lname'] ?></h6>
+					<h4>Taken by <?= $photo['fname'] ?> <?= $photo['lname'] ?></h4>
 				</div>
 			<?php endforeach; ?>
 		</div>
