@@ -32,8 +32,13 @@ require_login($logged_in);                  // Redirect user if not logged in
 		<div class="header-right">
 			<ul>
 				<li><a href="p_order.php">Check Order</a></li>
+				<?php 
+					if (check_user_type()) {
+						echo '<li><a href="upload.php">Upload Photos</a></li>';
+					}
+				?>
 			</ul>
-		</div>
+</div>
 	</header>
 	<main>
     <h1>Welcome to Photoshop!</h1>
