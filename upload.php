@@ -1,4 +1,5 @@
-<?php   										
+<?php   
+	include 'includes/sessions.php';										
 	require 'includes/database-connection.php';
 
 	function addPhotos($shootID, $printCanvas, $size, $price, $imgSrc, $pdo) {

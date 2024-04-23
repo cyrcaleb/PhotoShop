@@ -1,6 +1,5 @@
 <?php
 include 'includes/sessions.php';
-
 // Include the database connection script
 require 'includes/database-connection.php';
 
