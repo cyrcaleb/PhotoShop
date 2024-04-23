@@ -13,7 +13,7 @@
 			JOIN Photoshoot ON Photoshoot.shootID = contains.shootID
             JOIN customer_shoot ON contains.shootID = customer_shoot.shootID
 			JOIN Photographer ON Photographer.photographerID = customer_shoot.photographerID
-			ORDER BY RAND() LIMIT :numPhotos;";
+			LIMIT :numPhotos;";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['numPhotos' => $numPhotos]);
@@ -21,7 +21,10 @@
         return $stmt->fetchAll();
     }
 
-	$photos = RetrieveRandomPhotos($pdo, 10);
+	$photos = RetrieveRandomPhotos($pdo, 100);
+	shuffle($photos);
+
+	$displayAmount = 10;
 ?>
 
 <!DOCTYPE>
