@@ -1,7 +1,4 @@
 <?php
-    include 'includes/sessions.php';	
-	require_login($logged_in);                  // Redirect user if not logged in
-
     /*
 	 * Retrieves a specified number of photos and their information from the database.
 	 * 
