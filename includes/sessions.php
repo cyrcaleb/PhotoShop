@@ -2,14 +2,12 @@
 session_start();                                         // Start/renew session
 $logged_in = $_SESSION['logged_in'] ?? false;            // Is user logged in?
 
-$email     = 'ivy@eg.link';                              // Email address to login
-$password  = 'password';                                 // Password to login
-
 function login()                                         // Remember user passed login
 {
     session_regenerate_id(true);                         // Update session id
     $_SESSION['logged_in'] = true;                       // Set logged_in key to true
-}
+    $_SESSION['user_type'] = $_POST['user_type'];        // Set user type key to user type
+}   
 
 function logout()                                        // Terminate the session
 {

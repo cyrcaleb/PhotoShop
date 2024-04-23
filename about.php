@@ -30,8 +30,12 @@ require_login($logged_in);                  // Redirect user if not logged in
 		<div class="header-right">
 			<ul>
 				<li><a href="p_order.php">Check Order</a></li>
-				<li><a href="upload.php">Upload Photos</a></li>
-				<li><a href="newShoot.php">New Photoshoot</a></li>
+				<?php
+					if ($_SESSION['user_type'] = "Photographer") {
+						echo '<li><a href="upload.php">Upload Photos</a></li>';
+						echo '<li><a href="newShoot.php">New Photoshoot</a></li>';
+					}
+            	?>
 			</ul>
 		</div>
 	</header>
