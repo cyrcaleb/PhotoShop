@@ -60,10 +60,25 @@
 		    </div>
 		</header>
 
+		<?php
+			foreach ($randomPhotos as $photo) {
+		?>
+		<div class="photographer-catalog">
+			
+		</div>
+		<?php
+			}
+		?>
+
+		
 		<div class="photo-container flex-container">
 			<?php foreach ($randomPhotos as $photo): ?>
 				<div class="photo orderImg-card">
-					<img src="<?= $photo['imgSrc'] ?>" alt="Photo Num <?= $photo['photoID'] ?>">
+					<a href="photographer.php?photographerID=<?= $photo['photographerID'] ?>">
+						<img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoId'] ?>">
+					</a>
+					<h2><?= $photo['location'] ?></h2>
+					<p>Taken by <?= $photo['fname'] ?> <?= $photo['lname'] ?></p>
 				</div>
 			<?php endforeach; ?>
 		</div>
