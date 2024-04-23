@@ -29,6 +29,8 @@ function require_login($logged_in)                       // Check if user logged
 
 function check_user_type(){
     if(isset($_SESSION['user_type'])){
-        return true;
+        if ($_SESSION['user_type'] == 'Photographer'){
+            return true;
+        }
     }
 }
