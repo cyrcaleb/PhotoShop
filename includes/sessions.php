@@ -2,10 +2,10 @@
 session_start();                                         // Start/renew session
 $logged_in = $_SESSION['logged_in'] ?? false;            // Is user logged in?
 
-function login()                                         // Remember user passed login
+function login($user_type)                                         // Remember user passed login
 {
     session_regenerate_id(true);                         // Update session id
-    $_SESSION['user_type'] = 'Photographer';
+    $_SESSION['user_type'] = $user_type;
     $_SESSION['logged_in'] = true;                       // Set logged_in key to true
 }   
 

@@ -1,4 +1,5 @@
 <?php
+include 'includes/c_sessions.php';
 // Include the database connection script
 require 'includes/database-connection.php';
 
@@ -18,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
+        login('Customer');
         // Login successful, redirect the user to the dashboard or some other page
         header('Location: about.php');
         exit;

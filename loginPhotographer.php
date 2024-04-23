@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user) {
         // Login successful, redirect the user to the dashboard or some other page
-        login();
+        login('Photographer');
         header('Location: about.php');
         exit;
     } else {
