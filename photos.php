@@ -59,17 +59,6 @@
 		    	</ul>
 		    </div>
 		</header>
-
-		<?php
-			foreach ($randomPhotos as $photo) {
-		?>
-		<div class="photographer-catalog">
-			
-		</div>
-		<?php
-			}
-		?>
-
 		
 		<div class="photo-container flex-container">
 			<?php foreach ($randomPhotos as $photo): ?>
@@ -78,7 +67,7 @@
 						<img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoId'] ?>">
 					</a>
 					<h2><?= $photo['location'] ?></h2>
-					<p>Taken by <?= $photo['fname'] ?> <?= $photo['lname'] ?></p>
+					<h3>Taken by <?= $photo['fname'] ?> <?= $photo['lname'] ?></h3>
 				</div>
 			<?php endforeach; ?>
 		</div>
