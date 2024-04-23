@@ -90,8 +90,12 @@ function createNewShoot($email, $account, $location, $date, $pdo)
         $stmt_customer_shoot->bindParam(':photographerID', $photographerID);
         $stmt_customer_shoot->execute();
 
-        // Return true to indicate success
-        return true;
+        // Return an array containing shootID, location, and date
+        return array(
+            'shootID' => $new_shootID,
+            'location' => $location,
+            'date' => $date
+        );
     } catch (PDOException $e) {
         // Return false if there's a PDOException
         return false;
@@ -175,15 +179,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </form>
             </div>
             <?php if (isset($success) && $success): ?>
-            <div class="order-details">
-                <h1>New Photoshoot Details</h1>
-                <p>New photoshoot created successfully.</p>
-            </div>
-            <?php elseif (isset($success)): ?>
-            <div class="order-details">
-                <h1>Error</h1>
-                <p>Failed to create new photoshoot.</p>
-            </div>
+                <div class="order-details">
+                    <h1>New Photoshoot Details</h1>
+                    <p><strong>Photoshoot ID Number: </strong><?= $success['shootID'] ?></p>
+                    <p><strong>Location: </strong><?= $success['location'] ?></p>
+                    <p><strong>Date: </strong><?= $success['date'] ?></p>
+                    <p>Email chain between you and the customer has been established and customer has been given the photoshoot ID number for tracking.</p>
+                </div>
+                <?php elseif (isset($success)): ?>
+                <div class="order-details">
+                    <h1>Error</h1>
+                    <p>Failed to create new photoshoot.</p>
+                </div>
             <?php endif; ?>
         </div>
     </main>
