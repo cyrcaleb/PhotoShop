@@ -1,8 +1,8 @@
 <?php
 include 'includes/sessions.php';
 require_login($logged_in);                  // Redirect user if not logged in
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 ?>
 <!DOCTYPE html>
 <html>
