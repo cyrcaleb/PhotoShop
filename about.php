@@ -24,11 +24,21 @@
 			</nav>
 		</div>
 		<div class="header-right">
-			<ul>
-				<li><a href="p_order.php">Check Order</a></li>
-				<li><a href="upload.php">Upload Photos</a></li>
-				<li><a href="newShoot.php">New Photoshoot</a></li>
-			</ul>
+		<ul>
+            <li><a href="p_order.php">Check Order</a></li>
+            <?php
+            // Start or resume the session
+            session_start();
+
+            // Check if the user is logged in as a photographer
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'photographer') {
+                echo "<li><a href='upload.php'>Upload Photos</a></li>";
+                echo "<li><a href='newShoot.php'>New Photoshoot</a></li>";
+            } else {
+                echo "<li>Not logged in as photographer</li>";
+            }
+            ?>
+        </ul>
 		</div>
 	</header>
 	<main>
