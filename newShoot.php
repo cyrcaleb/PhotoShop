@@ -1,11 +1,5 @@
 <?php
 include 'includes/sessions.php';
-//print our user_type
-print_r($_SESSION);
-logout();
-// Enable error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 // Include the database connection script
 require 'includes/database-connection.php';
