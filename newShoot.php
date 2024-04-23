@@ -1,5 +1,6 @@
 <?php
 include 'includes/sessions.php';
+require_login($logged_in);                  // Redirect user if not logged in
 // Include the database connection script
 require 'includes/database-connection.php';
 
@@ -137,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li><a href="photographer_catalog.php">Photographers</a></li>
 					<li><a href="photos.php">Photos</a></li>
                     <li><a href="about.php">About</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="userLogout.php">Logout</a></li>
                 </ul>
             </nav>
         </div>
