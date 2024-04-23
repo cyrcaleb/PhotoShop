@@ -1,7 +1,6 @@
 <?php
 include 'includes/sessions.php';
 require_login($logged_in);                  // Redirect user if not logged in
-logout();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
@@ -36,9 +35,10 @@ ini_set('display_errors', 1);
 				<?php 
 					if (check_user_type()) {
 						echo '<li><a href="upload.php">Upload Photos</a></li>';
+						echo '<li><button onclick=logout()>Logout</button></li>';
 					}
 				?>
-				<li><button onclick=logout()>Logout</button></li>
+				
 			</ul>
 </div>
 	</header>
