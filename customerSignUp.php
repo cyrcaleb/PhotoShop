@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Commit the transaction
         $pdo->commit();
 
-        // Redirect to a success page
-        header('Location: signup_success.php');
+        // Success and redirect to the start screen
+        echo "<script>alert('Sign up successful!'); window.location.href = 'startScreen.php';</script>";
         exit;
     } catch (PDOException $e) {
         // Rollback the transaction if an error occurred
