@@ -70,6 +70,7 @@
 					  	<li><a href="photographer_catalog.php">Photographers</a></li>
 						<li><a href="photos.php">Photos</a></li>
 	      				<li><a href="about.php">About</a></li>
+						<li><a href="logout.php">Logout</a></li>
 			        </ul>
 			    </nav>
 		   	</div>

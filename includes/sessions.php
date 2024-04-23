@@ -18,6 +18,9 @@ function logout()                                        // Terminate the sessio
         $params['secure'], $params['httponly']);         // Delete session cookie
 
     session_destroy();                                   // Delete session file
+
+    //redirect the user to startScreen.php
+    header('Location: startScreen.php');
 }
 
 function require_login($logged_in)                       // Check if user logged in
