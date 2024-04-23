@@ -12,6 +12,7 @@
 		    JOIN contains ON Photo.photoID = contains.photoID
 			JOIN Photoshoot ON Photoshoot.shootID = contains.shootID
             JOIN customer_shoot ON contains.shootID = customer_shoot.shootID
+			JOIN Photographer ON Photographer.photographerID = customer_shoot.photographerID
 			ORDER BY RAND() LIMIT :numPhotos;";
 
         $stmt = $pdo->prepare($sql);
@@ -59,18 +60,12 @@
 		    </div>
 		</header>
 
-		<?php
-			foreach ($randomPhotos as $photo) {
-		?>
-		<div class="photographer-catalog">
-			<a href="photographer.php?photographerID=<?= $photo['photographerID'] ?>">
-				<img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoId'] ?>">
-			</a>
-			<h2><?= $photo['location'] ?></h2>
-			<p>Taken by <?= $photo['fname'] ?> <?= $photo['lname'] ?></p>
+		<div class="photo-container flex-container">
+			<?php foreach ($randomPhotos as $photo): ?>
+				<div class="photo orderImg-card">
+					<img src="<?= $photo['imgSrc'] ?>" alt="Photo Num <?= $photo['photoID'] ?>">
+				</div>
+			<?php endforeach; ?>
 		</div>
-		<?php
-			}
-		?>
     </body>
 </html>
