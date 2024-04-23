@@ -2,12 +2,12 @@
     require 'includes/database-connection.php';
 
     /*
-	 * Retrieves a specified number of random photos and its information from the database.
+	 * Retrieves a specified number of photos and their information from the database.
 	 * 
 	 * @param PDO $pdo          An instance of the PDO class.
 	 * @param int $numPhotos    The number of photos to retrieve.
 	 */
-    function RetrieveRandomPhotos($pdo, int $numPhotos) {
+    function RetrievePhotos($pdo, int $numPhotos) {
         $sql = "SELECT * FROM Photo
 		    JOIN contains ON Photo.photoID = contains.photoID
 			JOIN Photoshoot ON Photoshoot.shootID = contains.shootID
@@ -20,11 +20,10 @@
 
         return $stmt->fetchAll();
     }
+	$photos = RetrievePhotos($pdo, 100);
 
-	$photos = RetrieveRandomPhotos($pdo, 100);
+	// Randomize the photos array in PHP instead of using SQL.
 	shuffle($photos);
-
-	$displayAmount = 10;
 ?>
 
 <!DOCTYPE>
@@ -33,7 +32,7 @@
 		<meta charset="UTF-8">
   		<meta name="viewport" content="width=device-width, initial-scale=1.0">
   		<title>PhotoShop</title>
-  		<link rel="stylesheet" href="css/photostyle.css">
+		<link rel="stylesheet" href="css/photostyle.css">
   		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
