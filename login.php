@@ -1,4 +1,5 @@
 <?php
+include 'includes/sessions.php';
 // Include the database connection script
 require 'includes/database-connection.php';
 
@@ -19,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user) {
         // Login successful, redirect the user to the dashboard or some other page
+        login('Customer');
         header('Location: about.php');
         exit;
     } else {
