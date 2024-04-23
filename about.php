@@ -37,7 +37,7 @@ require_login($logged_in);                  // Redirect user if not logged in
 						echo '<li><a href="upload.php">Upload Photos</a></li>';
 					}
 				?>
-				<li><button onclick="logout()">Logout</button></li>
+				<li><button onclick=logout()>Logout</button></li>
 			</ul>
 </div>
 	</header>
