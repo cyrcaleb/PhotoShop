@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($_POST['user_type'] === 'Customer') {
         header('Location: customerLogin.php');
         exit;
-    } elseif ($_POST['user_type'] === 'Sign Up') {
+    } elseif ($_POST['user_type'] === 'New') {
         header('Location: customerSignUp.php');
         exit;
     }
