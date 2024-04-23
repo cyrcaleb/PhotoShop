@@ -8,7 +8,12 @@
 	 * @param int $numPhotos    The number of photos to retrieve.
 	 */
     function RetrieveRandomPhotos($pdo, int $numPhotos) {
-        $sql = "SELECT * FROM Photo ORDER BY RAND() LIMIT :numPhotos;";
+        $sql = "SELECT * FROM Photo
+		    JOIN contains ON Photo.photoID = contains.photoID
+			JOIN Photoshoot ON Photoshoot.shootID = contains.shootID
+            JOIN customer_shoot ON contains.shootID = customer_shoot.shootID
+			ORDER BY RAND() LIMIT :numPhotos;";
+
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['numPhotos' => $numPhotos]);
 
@@ -57,13 +62,12 @@
 		<?php
 			foreach ($randomPhotos as $photo) {
 		?>
-		<div class="toy-card">
-			<!-- TODO: Link to correct photographer page -->
-			<a href="toy.php?toynum=<?= $photo['toynum'] ?>">
-				<img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['name'] ?>">
+		<div class="photographer-catalog">
+			<a href="photographer.php?photographerID=<?= $photo['photographerID'] ?>">
+				<img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoId'] ?>">
 			</a>
-			<h2><?= $photo['name'] ?></h2>
-			<p>$<?= $photo['price'] ?></p>
+			<h2><?= $photo['location'] ?></h2>
+			<p>Taken by <?= $photo['fname'] ?> <?= $photo['lname'] ?></p>
 		</div>
 		<?php
 			}
