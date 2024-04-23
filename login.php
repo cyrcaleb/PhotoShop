@@ -1,8 +1,4 @@
 <?php
-// Enable error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 // Include the database connection script
 require 'includes/database-connection.php';
 
@@ -22,17 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        header('Location: https://calebcyr.rhody.dev/PhotoShop/about.php');
+        // Login successful, redirect the user to the dashboard or some other page
+        header('Location: about.php');
         exit;
     } else {
-        // Debug message
-        echo "Login failed<br>";
-
         // Login failed, display an error message
         echo "Invalid username or password";
     }
-} else {
-    // Debug message
-    echo "Form not submitted";
 }
 ?>

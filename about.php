@@ -32,6 +32,16 @@
 		</div>
 	</header>
 	<main>
+    <h1>Welcome to Photoshop!</h1>
+    <p>We help to pair photographers with clients, and this serves as a platform where both parties can access the photos from the respective photoshoot. Customers are encouraged to find potential photographers using this application and retrieve their recent photos after a photoshoot, and photographers are encouraged to build an outstanding portfolio through this application and showcase their best work!</p>
+
+    <h2>For Photographers:</h2>
+    <p>Photographers have the opportunity to create new photoshoots for themselves and their customers, upload photos to corresponding photoshoots, and take a look at other photographers and the work they have completed.</p>
+
+    <h2>For Customers:</h2>
+    <p>For customers, there is a wide variety of options when navigating through this application. To start, customers can go to the “Photographers” page. They can see the top-rated photographers and filter/organize the results from here. If they see a photographer they like, they can click on them to view their profile. Their profile shows the number of photoshoots they have done, salary, and contact information such as emails and phone numbers.</p>
+    
+    <p>Another page that customers have access to is “Check order”. After a photoshoot, a customer will be supplied a photoshootID for their photos. Within the check order page, they can simply paste the photoshootID. If successful, you can scroll through the photos that were taken during this photoshoot. You can see the price of each photo and the type (canvas, print).</p>
 	</main>
 </body>
 </html>
