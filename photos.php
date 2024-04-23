@@ -2,7 +2,7 @@
     require 'includes/database-connection.php';
 
     /*
-	 * Retrieves a specified number of random photos from the database.
+	 * Retrieves a specified number of random photos and its information from the database.
 	 * 
 	 * @param PDO $pdo          An instance of the PDO class.
 	 * @param int $numPhotos    The number of photos to retrieve.
@@ -21,7 +21,7 @@
         return $stmt->fetchAll();
     }
 
-	$randomPhotos = RetrieveRandomPhotos($pdo, 15);
+	$photos = RetrieveRandomPhotos($pdo, 10);
 ?>
 
 <!DOCTYPE>
@@ -46,28 +46,29 @@
 	      		<nav>
 	      			<ul>
 	      				<li><a href="photographer_catalog.php">Photographers</a></li>
+						<li><a href="photos.php">Photos</a></li>
 	      				<li><a href="about.php">About</a></li>
 			        </ul>
 			    </nav>
 		   	</div>
 
-		    <div class="header-right">
+			<div class="header-right">
 		    	<ul>
 					<li><a href="p_order.php">Check Order</a></li>
-					<!-- <li><a href="upload.php">Upload Photos</a></li>
-					<li><a href="newShoot.php">New Photoshoot</a></li> -->
+					<li><a href="upload.php">Upload Photos</a></li>
+					<li><a href="newShoot.php">New Photoshoot</a></li>
 		    	</ul>
 		    </div>
 		</header>
 		
 		<div class="photo-container flex-container">
-			<?php foreach ($randomPhotos as $photo): ?>
+			<?php foreach ($photos as $photo): ?>
 				<div class="photo orderImg-card">
 					<a href="photographer.php?photographerID=<?= $photo['photographerID'] ?>">
 						<img src="<?= $photo['imgSrc'] ?>" alt="<?= $photo['photoId'] ?>">
 					</a>
 					<h2><?= $photo['location'] ?></h2>
-					<h3>Taken by <?= $photo['fname'] ?> <?= $photo['lname'] ?></h3>
+					<h6>Taken by <?= $photo['fname'] ?> <?= $photo['lname'] ?></h6>
 				</div>
 			<?php endforeach; ?>
 		</div>
