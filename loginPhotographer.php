@@ -1,9 +1,4 @@
 <?php
-error_reporting(E_ALL); 
-ini_set('display_errors', 1);
-// Start or resume a session
-session_start();
-
 // Include the database connection script
 require 'includes/database-connection.php';
 
@@ -23,11 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        // Set session variables to indicate user login status and type
-        $_SESSION['logged_in'] = true;
-        $_SESSION['user_type'] = 'Photographer';
-        
-        // Redirect the user to the dashboard or some other page
+        // Login successful, redirect the user to the dashboard or some other page
         header('Location: about.php');
         exit;
     } else {
