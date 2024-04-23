@@ -30,7 +30,7 @@
 					// Include the PHP script to check if the user is logged in as a photographer
 					require_once 'check_photographer_login.php';
 					// Check if the user is logged in as a photographer
-					if !($isPhotographerLoggedIn) {
+					if ($isPhotographerLoggedIn) {
 						echo '<li><a href="upload.php">Upload Photos</a></li>';
 						echo '<li><a href="newShoot.php">New Photoshoot</a></li>';
 					}

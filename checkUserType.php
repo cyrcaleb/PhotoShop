@@ -5,7 +5,7 @@ require 'includes/database-connection.php';
 // Assume you have a session started already
 
 // Check if the user is logged in
-if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'photographer') {
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'Photographer') {
     // User is logged in as a photographer
     $isPhotographerLoggedIn = true;
 } else {
